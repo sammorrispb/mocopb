@@ -72,12 +72,29 @@ export function getWelcomeEmail(name: string, interest: string): EmailTemplate {
           <p>Great decision — private coaching is the fastest way to improve. I offer lessons at Dill Dinkers indoor facilities in Rockville and North Bethesda.</p>
           <p><strong>What to expect:</strong></p>
           <ul>
-            <li><strong>Skill evaluation</strong> — We'll start by assessing your current level so I can tailor the instruction to your game.</li>
             <li><strong>Video analysis</strong> — I record key drills so you can see your technique from a coach's perspective.</li>
             <li><strong>Custom practice plan</strong> — You'll leave every session with specific drills to work on between lessons.</li>
             <li><strong>Flexible scheduling</strong> — Weekday and weekend availability.</li>
           </ul>
           <p>I'm PPR-certified with a Master's in Coaching and work with players from complete beginners to 5.0+ competitors.</p>
+
+          <h3 style="margin-top:28px;font-size:16px;color:#0d7c5f;">Get Your DUPR Rating</h3>
+          <p>Here's how to get your pickleball DUPR rating set up so you can get the right level of play at Dill Dinkers:</p>
+          <ol>
+            <li>Create a free DUPR account at <a href="https://www.dupr.com" style="color:#0d7c5f;">www.dupr.com</a></li>
+            <li>Click my unique link to download My DUPR Coach app: <a href="https://link.myjourneypickleball.com/2wnGAldZBQb" style="color:#0d7c5f;">Download Here</a></li>
+            <li>In the My DUPR Coach app, go to the "…" menu and scroll down to "Connect" to DUPR (it will prompt you to sign into your DUPR account)</li>
+            <li><strong>Schedule your 30-minute evaluation</strong> — reach out to Coach Sam to get on court. I'll check out your skills and give you your initial rating.</li>
+          </ol>
+          <p><strong>Evaluation details:</strong></p>
+          <ul>
+            <li><strong>FREE</strong> for Dill Dinkers members (Rockville and/or North Bethesda). $15 for visitors.</li>
+            <li>Generally available <strong>weekdays before 4pm</strong> — Tuesdays at Dill Dinkers North Bethesda (4942 Boiling Brook Pkwy) and Thursdays at Rockville (40C Southlawn Ct).</li>
+            <li>Coach Danny is also DUPR certified and can be scheduled at <a href="mailto:Dan.grijalva@pm.me" style="color:#0d7c5f;">Dan.grijalva@pm.me</a></li>
+          </ul>
+
+          <p><strong>Want help finding people to play with locally?</strong> Join my <a href="https://linkanddink.com?utm_source=mocopb&utm_medium=email&utm_campaign=welcome_lessons" style="color:#0d7c5f;">Link &amp; Dink</a> community — I'll help connect you with other players when you need it.</p>
+
           ${cta("Book a Lesson", "https://www.sammorrispb.com/programs/coaching?utm_source=mocopb&utm_medium=email&utm_campaign=welcome_lessons")}
         `),
       };
