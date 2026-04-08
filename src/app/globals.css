@@ -1,0 +1,161 @@
+@import "tailwindcss";
+@import "tailwindcss/theme" theme(reference);
+
+@theme inline {
+  /* Primary palette */
+  --color-court-green: #0d7c5f;
+  --color-court-green-light: #10b981;
+  --color-teal: #0891b2;
+  --color-teal-light: #22d3ee;
+
+  /* Backgrounds */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f0fdf4;
+  --color-bg-card: #ffffff;
+  --color-bg-nav: rgba(255, 255, 255, 0.92);
+
+  /* Text */
+  --color-text-primary: #1a2e1a;
+  --color-text-muted: #64748b;
+  --color-text-inverse: #ffffff;
+
+  /* Accents */
+  --color-cta-orange: #f97316;
+  --color-cta-orange-hover: #ea580c;
+  --color-highlight: #fbbf24;
+
+  /* Fonts */
+  --font-heading: var(--font-montserrat), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: rgba(13, 124, 95, 0.2);
+  color: #1a2e1a;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+}
+
+/* Accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-court-green);
+  outline-offset: 2px;
+}
+
+/* Card hover */
+.card-moco {
+  background: var(--color-bg-card);
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card-moco:hover {
+  border-color: rgba(13, 124, 95, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Primary CTA button (green) */
+.btn-primary {
+  background: linear-gradient(135deg, #0d7c5f, #0891b2);
+  color: #fff;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* Hub CTA button (orange — visually distinct) */
+.btn-hub {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #fff;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.btn-hub:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* Secondary button (outline) */
+.btn-outline {
+  border: 2px solid #0d7c5f;
+  color: #0d7c5f;
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: #0d7c5f;
+  color: #fff;
+}
+
+/* Badge styles */
+.badge-indoor {
+  background: rgba(8, 145, 178, 0.1);
+  color: #0891b2;
+  border: 1px solid rgba(8, 145, 178, 0.2);
+}
+
+.badge-outdoor {
+  background: rgba(13, 124, 95, 0.1);
+  color: #0d7c5f;
+  border: 1px solid rgba(13, 124, 95, 0.2);
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Gradient text */
+.gradient-text-moco {
+  background: linear-gradient(135deg, #0d7c5f, #0891b2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero background */
+.hero-moco {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(13, 124, 95, 0.08), transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(8, 145, 178, 0.06), transparent 60%),
+    #f0fdf4;
+}
+
+/* Alt section backgrounds */
+section:nth-child(even) {
+  background: var(--color-bg-alt);
+}
