@@ -1,0 +1,29 @@
+import nodemailer from "nodemailer";
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+});
+
+export async function sendEmail({
+  to,
+  subject,
+  html,
+  bcc,
+}: {
+  to: string;
+  subject: string;
+  html: string;
+  bcc?: string;
+}) {
+  await transporter.sendMail({
+    from: `"MoCo PB" <${process.env.GMAIL_USER}>`,
+    to,
+    bcc,
+    subject,
+    html,
+  });
+}
