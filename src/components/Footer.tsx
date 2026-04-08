@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
 import { businesses } from "@/lib/businesses";
+import { cities } from "@/lib/cities";
 import { businessUrl } from "@/lib/tracking";
 import { TrackedExternalLink } from "./TrackedExternalLink";
 
@@ -76,7 +77,19 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-10 pt-6 text-center text-xs text-gray-500">
+        {/* City Links for SEO */}
+        <div className="border-t border-gray-800 mt-8 pt-6">
+          <h4 className="font-heading font-semibold text-white text-sm mb-3">Pickleball Near You</h4>
+          <div className="flex flex-wrap gap-x-4 gap-y-1">
+            {cities.map((city) => (
+              <Link key={city.slug} href={`/play/${city.slug}`} className="text-xs text-gray-400 hover:text-white transition-colors">
+                {city.name}, MD
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="border-t border-gray-800 mt-6 pt-6 text-center text-xs text-gray-500">
           &copy; {new Date().getFullYear()} MoCo PB. A community resource for Montgomery County pickleball players.
         </div>
       </div>

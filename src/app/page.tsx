@@ -10,6 +10,7 @@ import { GroupCard } from "@/components/GroupCard";
 import { BusinessGrid } from "@/components/BusinessGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { HubCTA } from "@/components/HubCTA";
+import { CityGrid } from "@/components/CityGrid";
 
 export default function HomePage() {
   const featuredCourts = getFeaturedCourts();
@@ -120,6 +121,11 @@ export default function HomePage() {
             </Link>
           </div>
         </section>
+      </AnimateOnScroll>
+
+      {/* City Pages — Local SEO */}
+      <AnimateOnScroll>
+        <CityGrid />
       </AnimateOnScroll>
 
       {/* FAQ Preview */}
