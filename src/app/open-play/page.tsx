@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { LeadForm } from "@/components/LeadForm";
+import { BusinessGrid } from "@/components/BusinessGrid";
 import { HubCTA } from "@/components/HubCTA";
 
 export const metadata: Metadata = {
@@ -69,6 +71,43 @@ export default function OpenPlayPage() {
           </div>
         </section>
       </AnimateOnScroll>
+
+      <AnimateOnScroll>
+        <section className="py-16 px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-heading font-bold text-2xl text-text-primary mb-3">
+              Want to Level Up?
+            </h2>
+            <p className="text-text-muted mb-8">
+              Open play is a great start. Here are ways to take your game further.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <Link href="/lessons" className="card-moco p-5 text-center hover:border-court-green/30 transition-colors">
+                <h3 className="font-heading font-semibold text-lg text-text-primary mb-1">Lessons</h3>
+                <p className="text-sm text-text-muted">Private coaching to improve faster</p>
+              </Link>
+              <Link href="/clinics" className="card-moco p-5 text-center hover:border-court-green/30 transition-colors">
+                <h3 className="font-heading font-semibold text-lg text-text-primary mb-1">Clinics</h3>
+                <p className="text-sm text-text-muted">Group clinics for targeted skills</p>
+              </Link>
+              <Link href="/leagues" className="card-moco p-5 text-center hover:border-court-green/30 transition-colors">
+                <h3 className="font-heading font-semibold text-lg text-text-primary mb-1">Leagues</h3>
+                <p className="text-sm text-text-muted">Compete in organized leagues</p>
+              </Link>
+            </div>
+          </div>
+        </section>
+      </AnimateOnScroll>
+
+      <AnimateOnScroll>
+        <section className="py-16 px-4">
+          <div className="max-w-lg mx-auto">
+            <LeadForm page="open-play" defaultInterest="open-play" />
+          </div>
+        </section>
+      </AnimateOnScroll>
+
+      <BusinessGrid />
 
       <HubCTA
         headline="Want to find regular playing partners?"

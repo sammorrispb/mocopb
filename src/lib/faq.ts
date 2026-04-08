@@ -1,8 +1,9 @@
 import type { FAQItem } from "@/components/FAQAccordion";
-import { hubUrl } from "./tracking";
+import { hubUrl, businessUrl } from "./tracking";
+import { getBusinessById } from "./businesses";
 
-const COACHING = "https://www.sammorrispb.com";
-const NGA = "https://www.nextgenacademypb.com";
+const coaching = getBusinessById("coaching");
+const nga = getBusinessById("nga");
 
 export const faqCategories = [
   { id: "getting-started", label: "Getting Started" },
@@ -84,19 +85,19 @@ export const allFAQs: CategorizedFAQ[] = [
     category: "improving",
     question: "How do I get better at pickleball?",
     answer: "The fastest way to improve is a combination of playing regularly, taking lessons from a certified coach, and drilling specific skills. Focus on consistency before power — a reliable serve, accurate dinks, and smart court positioning will beat raw athleticism every time.",
-    cta: { text: "Book a lesson", href: COACHING + "/programs/coaching?utm_source=mocopb&utm_medium=website&utm_campaign=faq_improve" },
+    cta: { text: "Book a lesson", href: businessUrl(coaching, "faq_improve", "book_lesson", "/programs/coaching") },
   },
   {
     category: "improving",
     question: "What is a DUPR rating?",
     answer: "DUPR (Dynamic Universal Pickleball Rating) is the global rating system for pickleball players, ranging from 2.0 (beginner) to 6.0+ (pro). It's based on match results, not self-assessment. Many leagues and tournaments in MoCo use DUPR for fair matchmaking.",
-    cta: { text: "Get evaluated", href: COACHING + "/programs/coaching?utm_source=mocopb&utm_medium=website&utm_campaign=faq_dupr" },
+    cta: { text: "Get evaluated", href: businessUrl(coaching, "faq_dupr", "get_evaluated", "/programs/coaching") },
   },
   {
     category: "improving",
     question: "Should I take pickleball lessons?",
     answer: "If you want to improve efficiently, yes. A certified coach can identify bad habits early, teach proper technique, and accelerate your development. Coach Sam Morris offers private lessons and skill evaluations at Dill Dinkers facilities in Rockville and North Bethesda.",
-    cta: { text: "Book a private lesson", href: COACHING + "/programs/coaching?utm_source=mocopb&utm_medium=website&utm_campaign=faq_lessons" },
+    cta: { text: "Book a private lesson", href: businessUrl(coaching, "faq_lessons", "book_private", "/programs/coaching") },
   },
   {
     category: "improving",
@@ -108,7 +109,7 @@ export const allFAQs: CategorizedFAQ[] = [
     category: "improving",
     question: "Are there youth pickleball programs in Montgomery County?",
     answer: "Yes! Next Gen Pickleball Academy offers structured programs for kids ages 5-16 at Dill Dinkers facilities. Four skill levels (Red, Orange, Green, Yellow) ensure your child progresses at the right pace. It's the only dedicated youth academy in MoCo.",
-    cta: { text: "Explore youth programs", href: NGA + "?utm_source=mocopb&utm_medium=website&utm_campaign=faq_youth" },
+    cta: { text: "Explore youth programs", href: businessUrl(nga, "faq_youth", "explore_youth") },
   },
 
   // Competitive
@@ -128,7 +129,7 @@ export const allFAQs: CategorizedFAQ[] = [
     category: "competitive",
     question: "What skill levels exist in pickleball?",
     answer: "Pickleball skill levels range from 1.0 (never played) to 5.5+ (professional). Most recreational players fall between 2.5 and 4.0. Beginners (2.0-2.5) are learning fundamentals. Intermediate players (3.0-3.5) have consistent rallies. Advanced players (4.0+) have strategic, competitive games.",
-    cta: { text: "Get your rating", href: COACHING + "/programs/coaching?utm_source=mocopb&utm_medium=website&utm_campaign=faq_skill_levels" },
+    cta: { text: "Get your rating", href: businessUrl(coaching, "faq_skill_levels", "get_rating", "/programs/coaching") },
   },
 ];
 

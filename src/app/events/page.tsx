@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { events } from "@/lib/events";
 import { EventCard } from "@/components/EventCard";
+import { LeadForm } from "@/components/LeadForm";
+import { BusinessGrid } from "@/components/BusinessGrid";
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { HubCTA } from "@/components/HubCTA";
 
 export const metadata: Metadata = {
@@ -36,6 +40,43 @@ export default function EventsPage() {
           )}
         </div>
       </section>
+
+      <AnimateOnScroll>
+        <section className="py-16 px-4">
+          <div className="max-w-lg mx-auto">
+            <LeadForm page="events" defaultInterest="other" />
+          </div>
+        </section>
+      </AnimateOnScroll>
+
+      <BusinessGrid />
+
+      <AnimateOnScroll>
+        <section className="py-16 px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-heading font-bold text-2xl text-text-primary mb-3">
+              Looking for Regular Play?
+            </h2>
+            <p className="text-text-muted mb-8">
+              Events are great, but there are more ways to get on the court every week.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <Link href="/leagues" className="card-moco p-5 text-center hover:border-court-green/30 transition-colors">
+                <h3 className="font-heading font-semibold text-lg text-text-primary mb-1">Leagues</h3>
+                <p className="text-sm text-text-muted">Competitive weekly matches</p>
+              </Link>
+              <Link href="/open-play" className="card-moco p-5 text-center hover:border-court-green/30 transition-colors">
+                <h3 className="font-heading font-semibold text-lg text-text-primary mb-1">Open Play</h3>
+                <p className="text-sm text-text-muted">Drop-in sessions across MoCo</p>
+              </Link>
+              <Link href="/lessons" className="card-moco p-5 text-center hover:border-court-green/30 transition-colors">
+                <h3 className="font-heading font-semibold text-lg text-text-primary mb-1">Lessons</h3>
+                <p className="text-sm text-text-muted">Private coaching to level up</p>
+              </Link>
+            </div>
+          </div>
+        </section>
+      </AnimateOnScroll>
 
       <HubCTA
         headline="Never miss an event"

@@ -1,7 +1,7 @@
 import { track } from "@vercel/analytics";
 
 type AnalyticsEventMap = {
-  cta_click: { label: string; page: string; destination: "hub" | "coaching" | "nga" | "dd" | "other" };
+  cta_click: { label: string; page: string; destination: "hub" | "coaching" | "nga" | "dd" | "other" | "internal" };
   lead_form: { action: "started" | "submitted" | "error"; interest: string; page: string };
   external_link: { label: string; url: string; page: string };
   nav_click: { label: string; device: "desktop" | "mobile" };

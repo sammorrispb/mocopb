@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
+import { BusinessCTA } from "@/components/BusinessCTA";
+import { LeadForm } from "@/components/LeadForm";
+import { businessUrl } from "@/lib/tracking";
+import { getBusinessById } from "@/lib/businesses";
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -19,7 +23,7 @@ const benefits = [
 ];
 
 export default function LessonsPage() {
-  const coachingUrl = "https://www.sammorrispb.com/programs/coaching?utm_source=mocopb&utm_medium=website&utm_campaign=lessons_page";
+  const coachingUrl = businessUrl(getBusinessById("coaching"), "lessons_page", "hero", "/programs/coaching");
 
   return (
     <>
@@ -63,25 +67,19 @@ export default function LessonsPage() {
         </section>
       </AnimateOnScroll>
 
+      {/* Lead Form */}
+      <AnimateOnScroll>
+        <section className="py-16 px-4">
+          <div className="max-w-3xl mx-auto text-center mb-8">
+            <h2 className="font-heading font-bold text-2xl text-text-primary">Get Started</h2>
+            <p className="text-text-muted mt-2">Tell us what you need and we&apos;ll point you in the right direction.</p>
+          </div>
+          <LeadForm page="lessons" defaultInterest="lessons" />
+        </section>
+      </AnimateOnScroll>
+
       {/* CTA */}
-      <section className="py-16 px-4">
-        <div className="max-w-3xl mx-auto text-center bg-gradient-to-br from-court-green to-teal rounded-2xl p-10 md:p-14">
-          <h2 className="font-heading font-bold text-2xl md:text-3xl text-white mb-4">
-            Ready to improve your game?
-          </h2>
-          <p className="text-green-100 mb-8 max-w-lg mx-auto">
-            Book a private lesson or start with a skill evaluation to find out where you stand.
-          </p>
-          <TrackedExternalLink
-            href={coachingUrl}
-            label="Book Now"
-            page="lessons"
-            className="btn-hub inline-block px-8 py-3.5 rounded-xl text-base font-bold shadow-lg"
-          >
-            Book Now
-          </TrackedExternalLink>
-        </div>
-      </section>
+      <BusinessCTA business="coaching" campaign="lessons_cta" content="bottom_banner" />
 
       {/* Service schema */}
       <script

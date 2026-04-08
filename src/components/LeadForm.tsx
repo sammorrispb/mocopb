@@ -16,8 +16,8 @@ const INTEREST_OPTIONS = [
   { value: "other", label: "Something Else", businessId: "hub" as const },
 ];
 
-export function LeadForm({ heading = "What are you looking for?", page = "unknown" }: { heading?: string; page?: string }) {
-  const [form, setForm] = useState({ name: "", email: "", interest: "" });
+export function LeadForm({ heading = "What are you looking for?", page = "unknown", defaultInterest }: { heading?: string; page?: string; defaultInterest?: string }) {
+  const [form, setForm] = useState({ name: "", email: "", interest: defaultInterest ?? "" });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const formStarted = useRef(false);
 

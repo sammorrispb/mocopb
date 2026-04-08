@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
+import { BusinessCTA } from "@/components/BusinessCTA";
+import { LeadForm } from "@/components/LeadForm";
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -62,24 +64,19 @@ export default function YouthPage() {
         </section>
       </AnimateOnScroll>
 
-      <section className="py-16 px-4">
-        <div className="max-w-3xl mx-auto text-center bg-gradient-to-br from-court-green to-teal rounded-2xl p-10 md:p-14">
-          <h2 className="font-heading font-bold text-2xl md:text-3xl text-white mb-4">
-            Give your child the best start in pickleball
-          </h2>
-          <p className="text-green-100 mb-8">
-            Certified coaches, indoor facilities, and a clear progression path.
-          </p>
-          <TrackedExternalLink
-            href={ngaUrl}
-            label="View Programs"
-            page="youth"
-            className="btn-hub inline-block px-8 py-3.5 rounded-xl text-base font-bold shadow-lg"
-          >
-            View Programs &amp; Schedule
-          </TrackedExternalLink>
-        </div>
-      </section>
+      {/* Lead Form */}
+      <AnimateOnScroll>
+        <section className="py-16 px-4">
+          <div className="max-w-3xl mx-auto text-center mb-8">
+            <h2 className="font-heading font-bold text-2xl text-text-primary">Get Started</h2>
+            <p className="text-text-muted mt-2">Tell us about your child and we&apos;ll help find the right program.</p>
+          </div>
+          <LeadForm page="youth" defaultInterest="youth" />
+        </section>
+      </AnimateOnScroll>
+
+      {/* CTA */}
+      <BusinessCTA business="nga" campaign="youth_cta" content="bottom_banner" />
 
       <script
         type="application/ld+json"

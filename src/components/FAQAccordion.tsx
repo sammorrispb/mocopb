@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
+import { TrackedExternalLink } from "@/components/TrackedExternalLink";
 
 export interface FAQItem {
   question: string;
@@ -51,14 +53,24 @@ export function FAQAccordion({ items, page }: { items: FAQItem[]; page: string }
                   {item.answer}
                 </p>
                 {item.cta && (
-                  <a
-                    href={item.cta.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block mx-5 mb-4 text-sm font-semibold text-court-green hover:underline"
-                  >
-                    {item.cta.text} &rarr;
-                  </a>
+                  item.cta.href.startsWith("/") ? (
+                    <Link
+                      href={item.cta.href}
+                      onClick={() => trackEvent("cta_click", { label: item.cta!.text, page, destination: "internal" })}
+                      className="inline-block mx-5 mb-4 text-sm font-semibold text-court-green hover:underline"
+                    >
+                      {item.cta.text} &rarr;
+                    </Link>
+                  ) : (
+                    <TrackedExternalLink
+                      href={item.cta.href}
+                      label={item.cta.text}
+                      page={page}
+                      className="inline-block mx-5 mb-4 text-sm font-semibold text-court-green hover:underline"
+                    >
+                      {item.cta.text} &rarr;
+                    </TrackedExternalLink>
+                  )
                 )}
               </div>
             </div>

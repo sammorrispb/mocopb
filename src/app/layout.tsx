@@ -5,7 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { ScrollDepthTracker } from "@/components/ScrollDepthTracker";
-import { StickyMobileCTA } from "@/components/StickyMobileCTA";
+import { StickyMobileCTARouter } from "@/components/StickyMobileCTARouter";
 import { SITE_URL, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/constants";
 import "./globals.css";
 
@@ -124,7 +124,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <StickyMobileCTA />
+        <StickyMobileCTARouter />
         <ScrollDepthTracker />
         <Analytics />
         <SpeedInsights />

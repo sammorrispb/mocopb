@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { TrackedExternalLink } from "@/components/TrackedExternalLink";
+import { BusinessCTA } from "@/components/BusinessCTA";
+import { LeadForm } from "@/components/LeadForm";
+import { businessUrl } from "@/lib/tracking";
+import { getBusinessById } from "@/lib/businesses";
 
 export const metadata: Metadata = {
   title: "Pickleball Clinics in Montgomery County, MD",
@@ -16,7 +20,7 @@ const clinicTypes = [
 ];
 
 export default function ClinicsPage() {
-  const coachingUrl = "https://www.sammorrispb.com/programs?utm_source=mocopb&utm_medium=website&utm_campaign=clinics_page";
+  const coachingUrl = businessUrl(getBusinessById("coaching"), "clinics_page", "hero", "/programs");
 
   return (
     <>
@@ -59,24 +63,26 @@ export default function ClinicsPage() {
         </section>
       </AnimateOnScroll>
 
-      <section className="py-16 px-4">
-        <div className="max-w-3xl mx-auto text-center bg-gradient-to-br from-court-green to-teal rounded-2xl p-10 md:p-14">
-          <h2 className="font-heading font-bold text-2xl md:text-3xl text-white mb-4">
-            Want personalized coaching?
-          </h2>
-          <p className="text-green-100 mb-8">
-            Private lessons give you 1-on-1 attention with video analysis and custom drills.
-          </p>
-          <TrackedExternalLink
-            href="https://www.sammorrispb.com/programs/coaching?utm_source=mocopb&utm_medium=website&utm_campaign=clinics_upsell"
-            label="Book Private Lesson"
-            page="clinics"
-            className="btn-hub inline-block px-8 py-3.5 rounded-xl text-base font-bold shadow-lg"
-          >
-            Book a Private Lesson
-          </TrackedExternalLink>
-        </div>
-      </section>
+      {/* Lead Form */}
+      <AnimateOnScroll>
+        <section className="py-16 px-4">
+          <div className="max-w-3xl mx-auto text-center mb-8">
+            <h2 className="font-heading font-bold text-2xl text-text-primary">Stay in the Loop</h2>
+            <p className="text-text-muted mt-2">Get notified about upcoming clinics and group instruction.</p>
+          </div>
+          <LeadForm page="clinics" defaultInterest="clinics" />
+        </section>
+      </AnimateOnScroll>
+
+      {/* CTA */}
+      <BusinessCTA
+        business="coaching"
+        campaign="clinics_cta"
+        content="bottom_banner"
+        headline="Want personalized coaching?"
+        subtext="Private lessons give you 1-on-1 attention with video analysis and custom drills."
+        buttonText="Book a Private Lesson"
+      />
     </>
   );
 }

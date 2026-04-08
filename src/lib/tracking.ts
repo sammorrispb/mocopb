@@ -7,8 +7,10 @@ export function businessUrl(
   business: Business,
   campaign: string = "general",
   content?: string,
+  path?: string,
 ): string {
   const url = new URL(business.url);
+  if (path) url.pathname = path;
   url.searchParams.set("utm_source", UTM_SOURCE);
   url.searchParams.set("utm_medium", UTM_MEDIUM);
   url.searchParams.set("utm_campaign", campaign);
