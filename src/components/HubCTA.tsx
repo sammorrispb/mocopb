@@ -1,4 +1,4 @@
-import { hubUrl } from "@/lib/hub";
+import { hubUrl } from "@/lib/tracking";
 
 interface HubCTAProps {
   headline?: string;

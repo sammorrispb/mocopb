@@ -1,4 +1,4 @@
-import { hubUrl } from "@/lib/hub";
+import { hubUrl } from "@/lib/tracking";
 import type { Group } from "@/lib/groups";
 
 export function GroupCard({ group }: { group: Group }) {

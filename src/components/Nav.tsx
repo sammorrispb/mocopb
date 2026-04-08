@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
-import { hubUrl } from "@/lib/hub";
+import { hubUrl } from "@/lib/tracking";
 
 export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);

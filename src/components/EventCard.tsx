@@ -1,4 +1,4 @@
-import { hubUrl } from "@/lib/hub";
+import { hubUrl } from "@/lib/tracking";
 import type { Event } from "@/lib/events";
 import { EVENT_TYPE_LABELS } from "@/lib/events";
 

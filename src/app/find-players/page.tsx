@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { hubUrl } from "@/lib/hub";
+import { hubUrl } from "@/lib/tracking";
 
 export const metadata: Metadata = {
   title: "Find Pickleball Players in Montgomery County, MD",

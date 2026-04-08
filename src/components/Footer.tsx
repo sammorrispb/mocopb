@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
-import { hubUrl } from "@/lib/hub";
+import { businesses } from "@/lib/businesses";
+import { businessUrl } from "@/lib/tracking";
+import { TrackedExternalLink } from "./TrackedExternalLink";
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-bg-dark text-gray-300 pb-20 md:pb-0">
       <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
             <h3 className="font-heading font-bold text-xl text-white mb-2">{SITE_NAME}</h3>
             <p className="text-sm text-gray-400">
-              Your guide to pickleball in Montgomery County, MD. Find courts, connect with players, and join the community.
+              Your guide to pickleball in Montgomery County, MD.
             </p>
           </div>
 
@@ -26,23 +28,51 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link href="/open-play" className="text-sm hover:text-white transition-colors">Open Play</Link>
+              </li>
+              <li>
+                <Link href="/leagues" className="text-sm hover:text-white transition-colors">Leagues</Link>
+              </li>
             </ul>
           </div>
 
-          {/* Hub CTA */}
+          {/* Programs */}
           <div>
-            <h4 className="font-heading font-semibold text-white mb-3">Join the Community</h4>
-            <p className="text-sm text-gray-400 mb-4">
-              Connect with 2,000+ pickleball players in Montgomery County.
-            </p>
-            <a
-              href={hubUrl("/", "footer_cta", "join_button")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-hub inline-block px-5 py-2.5 rounded-lg text-sm font-semibold"
-            >
-              Join Link &amp; Dink
-            </a>
+            <h4 className="font-heading font-semibold text-white mb-3">Programs</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/lessons" className="text-sm hover:text-white transition-colors">Private Lessons</Link>
+              </li>
+              <li>
+                <Link href="/clinics" className="text-sm hover:text-white transition-colors">Clinics</Link>
+              </li>
+              <li>
+                <Link href="/youth" className="text-sm hover:text-white transition-colors">Youth Academy</Link>
+              </li>
+              <li>
+                <Link href="/find-players" className="text-sm hover:text-white transition-colors">Find Players</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Businesses */}
+          <div>
+            <h4 className="font-heading font-semibold text-white mb-3">Our Network</h4>
+            <ul className="space-y-2">
+              {businesses.map((biz) => (
+                <li key={biz.id}>
+                  <TrackedExternalLink
+                    href={businessUrl(biz, "footer", biz.id)}
+                    label={biz.name}
+                    page="footer"
+                    className="text-sm hover:text-white transition-colors"
+                  >
+                    {biz.name}
+                  </TrackedExternalLink>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
