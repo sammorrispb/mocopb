@@ -51,7 +51,7 @@ export const allFAQs: CategorizedFAQ[] = [
   {
     category: "finding-play",
     question: "Where can I play pickleball in Montgomery County?",
-    answer: "Montgomery County has 30+ pickleball courts across 8+ facilities. Indoor options include Dill Dinkers (Rockville and North Bethesda) and Montgomery TennisPlex. Outdoor courts include Cabin John Regional Park, Olney Manor, and Wheaton Regional Park.",
+    answer: "Montgomery County has 30+ pickleball courts across multiple facilities. Indoor options include Dill Dinkers (Rockville and North Bethesda). Outdoor courts include Cabin John Regional Park, Olney Manor, Wheaton Regional Park, and Germantown Recreation Center.",
     cta: { text: "View all courts", href: "/courts" },
   },
   {

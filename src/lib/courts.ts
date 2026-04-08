@@ -125,22 +125,6 @@ export const courts: Court[] = [
     hours: "Members only — check with club for hours",
     notes: "Private club. Membership required.",
   },
-  {
-    slug: "montgomery-tennisplex",
-    name: "Montgomery TennisPlex at Cabin John",
-    type: "indoor",
-    address: "7801 Democracy Blvd",
-    city: "Bethesda",
-    zip: "20817",
-    coordinates: { lat: 39.0282, lng: -77.1451 },
-    courtCount: 4,
-    surface: "Indoor hard court",
-    amenities: ["Pro shop", "Lessons", "Parking", "Restrooms", "Food"],
-    hours: "Mon-Fri 6am-10pm, Sat-Sun 7am-8pm",
-    website: "https://www.montgomerytennisplex.com",
-    notes: "Primarily a tennis facility with dedicated pickleball courts and programs.",
-    featured: true,
-  },
 ];
 
 export function getCourtBySlug(slug: string): Court | undefined {

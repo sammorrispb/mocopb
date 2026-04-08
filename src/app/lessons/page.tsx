@@ -78,7 +78,7 @@ export default function LessonsPage() {
             page="lessons"
             className="btn-hub inline-block px-8 py-3.5 rounded-xl text-base font-bold shadow-lg"
           >
-            Book Now &mdash; $130/session
+            Book Now
           </TrackedExternalLink>
         </div>
       </section>

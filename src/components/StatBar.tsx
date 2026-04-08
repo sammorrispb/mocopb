@@ -2,7 +2,7 @@ const stats = [
   { value: "2,000+", label: "Players" },
   { value: "30+", label: "Courts" },
   { value: "15+", label: "Groups" },
-  { value: "8", label: "Facilities" },
+  { value: "7", label: "Facilities" },
 ];
 
 export function StatBar() {
