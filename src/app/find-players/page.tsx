@@ -85,7 +85,7 @@ export default function FindPlayersPage() {
               <div className="text-sm text-text-muted">Playing Groups</div>
             </div>
             <div>
-              <div className="font-heading font-bold text-3xl gradient-text-moco">7</div>
+              <div className="font-heading font-bold text-3xl gradient-text-moco">9</div>
               <div className="text-sm text-text-muted">Facilities</div>
             </div>
           </div>

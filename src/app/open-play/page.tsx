@@ -14,6 +14,8 @@ const venues = [
   { name: "Dill Dinkers North Bethesda", type: "Indoor", schedule: "Daily sessions — morning, afternoon, evening", notes: "Reserve through CourtReserve. Membership or day pass required.", link: "/courts/dill-dinkers-north-bethesda" },
   { name: "Cabin John Regional Park", type: "Outdoor", schedule: "Dawn to dusk, daily. Lit courts until 11pm.", notes: "Free. First come, first served. Busy weekends — arrive early.", link: "/courts/cabin-john-regional-park" },
   { name: "Olney Manor", type: "Outdoor", schedule: "Dawn to dusk, daily. Lit courts until 11pm.", notes: "Free. First come, first served.", link: "/courts/olney-manor-recreational-park" },
+  { name: "Bauer Drive Local Park", type: "Outdoor", schedule: "Dawn to dusk. Lights available evenings.", notes: "Free. Popular morning and evening open play in Rockville.", link: "/courts/bauer-drive-local-park" },
+  { name: "Mattie Stepanek Park", type: "Outdoor", schedule: "Dawn to dusk, daily.", notes: "Free. Open play available in Rockville.", link: "/courts/mattie-stepanek-park" },
 ];
 
 export default function OpenPlayPage() {
