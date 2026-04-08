@@ -11,6 +11,7 @@ import { BusinessGrid } from "@/components/BusinessGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { HubCTA } from "@/components/HubCTA";
 import { CityGrid } from "@/components/CityGrid";
+import { LeadForm } from "@/components/LeadForm";
 
 export default function HomePage() {
   const featuredCourts = getFeaturedCourts();
@@ -148,6 +149,13 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
+        </section>
+      </AnimateOnScroll>
+
+      {/* Lead Capture */}
+      <AnimateOnScroll>
+        <section className="py-16 px-4">
+          <LeadForm page="home" />
         </section>
       </AnimateOnScroll>
 
