@@ -1,8 +1,26 @@
 import { NextResponse } from "next/server";
 import { getWelcomeEmail } from "@/lib/email-templates";
 import { sendEmail } from "@/lib/send-email";
+import {
+  ingestToOpenBrain,
+  type OpenBrainBusiness,
+} from "@/lib/open-brain-ingest";
 
 const SAM_EMAIL = "sam.morris2131@gmail.com";
+
+// Maps the mocopb form `interest` value → which business pipeline the
+// lead should land in on Open Brain. Keep this in sync with INTEREST_OPTIONS
+// in src/components/LeadForm.tsx.
+const INTEREST_TO_BUSINESS: Record<string, OpenBrainBusiness> = {
+  "open-play": "ld",
+  "find-players": "ld",
+  "lessons": "coaching",
+  "clinics": "coaching",
+  "youth": "nga",
+  "leagues": "ld",
+  "facility": "dd",
+  "other": "mocopb",
+};
 
 export async function POST(request: Request) {
   try {
@@ -67,8 +85,22 @@ export async function POST(request: Request) {
       console.log("MOCOPB_LEAD (no email configured):", JSON.stringify({ name: cleanName, email: cleanEmail, interest }));
     }
 
+    // 3. Ingest to Open Brain master CRM (fire-and-forget)
+    const business = INTEREST_TO_BUSINESS[interest] ?? "mocopb";
+    void ingestToOpenBrain({
+      email: cleanEmail,
+      name: cleanName,
+      business,
+      source: "mocopb_form",
+      interest,
+      metadata: {
+        source_page: body.page || "unknown",
+      },
+    });
+
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
+
