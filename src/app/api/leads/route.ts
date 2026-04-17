@@ -5,6 +5,8 @@ import {
   ingestToOpenBrain,
   type OpenBrainBusiness,
 } from "@/lib/open-brain-ingest";
+import { sendFunnelEvent } from "@/lib/funnelServer";
+import { getRefSource } from "@/lib/tracking";
 
 const SAM_EMAIL = "sam.morris2131@gmail.com";
 
@@ -96,6 +98,15 @@ export async function POST(request: Request) {
       metadata: {
         source_page: body.page || "unknown",
       },
+    });
+
+    // 4. Fire unified funnel event (fire-and-forget)
+    const sourcePage = typeof body.page === "string" ? body.page : "/";
+    void sendFunnelEvent({
+      eventType: "lead_submitted",
+      email: cleanEmail,
+      marketingRef: getRefSource(sourcePage),
+      properties: { interest, source_page: sourcePage },
     });
 
     return NextResponse.json({ ok: true });
