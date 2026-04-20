@@ -5,6 +5,7 @@ export type { AnalyticsEventMap };
 export function trackEvent<K extends keyof AnalyticsEventMap>(
   name: K,
   props: AnalyticsEventMap[K],
+  marketingRefOverride?: string,
 ) {
-  trackFunnelEvent(name, props);
+  trackFunnelEvent(name, props, marketingRefOverride);
 }

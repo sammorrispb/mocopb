@@ -6,6 +6,7 @@ import { trackEvent } from "@/lib/analytics";
 type TrackedExternalLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   label: string;
   page: string;
+  marketingRefOverride?: string;
 };
 
 export function TrackedExternalLink({
@@ -14,6 +15,7 @@ export function TrackedExternalLink({
   href,
   onClick,
   children,
+  marketingRefOverride,
   ...props
 }: TrackedExternalLinkProps) {
   return (
@@ -23,7 +25,11 @@ export function TrackedExternalLink({
       rel="noopener noreferrer"
       {...props}
       onClick={(e) => {
-        trackEvent("external_link", { label, url: href ?? "", page });
+        trackEvent(
+          "external_link",
+          { label, url: href ?? "", page },
+          marketingRefOverride,
+        );
         onClick?.(e);
       }}
     >

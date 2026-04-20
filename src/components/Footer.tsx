@@ -2,7 +2,7 @@ import Link from "next/link";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
 import { businesses } from "@/lib/businesses";
 import { cities } from "@/lib/cities";
-import { businessUrl } from "@/lib/tracking";
+import { familyBusinessUrl, familyMarketingRef } from "@/lib/tracking";
 import { TrackedExternalLink } from "./TrackedExternalLink";
 
 export function Footer() {
@@ -64,9 +64,10 @@ export function Footer() {
               {businesses.map((biz) => (
                 <li key={biz.id}>
                   <TrackedExternalLink
-                    href={businessUrl(biz, "footer", biz.id)}
+                    href={familyBusinessUrl(biz)}
                     label={biz.name}
                     page="footer"
+                    marketingRefOverride={familyMarketingRef(biz)}
                     className="text-sm hover:text-white transition-colors"
                   >
                     {biz.name}

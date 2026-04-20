@@ -32,6 +32,38 @@ export function hubUrl(
   return url.toString();
 }
 
+// Family reciprocal nav: destination slug per business id. Used by both
+// familyBusinessUrl (utm_content + ref=) and familyMarketingRef.
+const FAMILY_DEST_SLUG: Record<Business["id"], string> = {
+  hub: "linkanddink",
+  coaching: "sammorrispb",
+  nga: "nga",
+  dd: "dilldinkers",
+};
+
+// Footer "Our Network" link URL with canonical family-nav UTMs. Matches the
+// cross_family_nav / family_reciprocal scheme used by sibling sites.
+// Also stamps ?ref=mocopb_footer_linkanddink on the Hub target so the Hub
+// landing can pick it up directly (other destinations rely on the funnel
+// event's marketing_ref).
+export function familyBusinessUrl(business: Business): string {
+  const url = new URL(business.url);
+  url.searchParams.set("utm_source", UTM_SOURCE);
+  url.searchParams.set("utm_medium", "cross_family_nav");
+  url.searchParams.set("utm_campaign", "family_reciprocal");
+  url.searchParams.set("utm_content", `footer_${FAMILY_DEST_SLUG[business.id]}`);
+  if (business.id === "hub") {
+    url.searchParams.set("ref", "mocopb_footer_linkanddink");
+  }
+  return url.toString();
+}
+
+// Per-destination marketing_ref for footer "Our Network" clicks so Hub's
+// AdminView journey dashboard sees each sibling as a distinct cohort.
+export function familyMarketingRef(business: Business): string {
+  return `mocopb_footer_${FAMILY_DEST_SLUG[business.id]}`;
+}
+
 // Derive the unified funnel's marketing_ref from the current pathname.
 // Maps city/business/courts/faq to stable refs; other pages fall back to the
 // first path segment (or "mocopb" at the root).
