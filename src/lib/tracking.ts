@@ -41,11 +41,30 @@ const FAMILY_DEST_SLUG: Record<Business["id"], string> = {
   dd: "dilldinkers",
 };
 
+// SSR-safe reader for the `ld_visitor` cookie set by funnelClient.
+// Returns null on the server, when the cookie is missing, or on any parse
+// error (fail-open — family-nav links must keep working without the cookie).
+function readLdVisitorCookie(): string | null {
+  if (typeof document === "undefined") return null;
+  try {
+    const pair = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("ld_visitor="));
+    if (!pair) return null;
+    const value = decodeURIComponent(pair.slice("ld_visitor=".length));
+    return value || null;
+  } catch {
+    return null;
+  }
+}
+
 // Footer "Our Network" link URL with canonical family-nav UTMs. Matches the
 // cross_family_nav / family_reciprocal scheme used by sibling sites.
 // Also stamps ?ref=mocopb_footer_linkanddink on the Hub target so the Hub
 // landing can pick it up directly (other destinations rely on the funnel
-// event's marketing_ref).
+// event's marketing_ref). When the ld_visitor cookie is present, appends
+// &ld_pid=<cookie> so the destination Hub landing can adopt the anonymous
+// trail across domains (UPJ Phase 2 cross-domain handoff).
 export function familyBusinessUrl(business: Business): string {
   const url = new URL(business.url);
   url.searchParams.set("utm_source", UTM_SOURCE);
@@ -54,6 +73,10 @@ export function familyBusinessUrl(business: Business): string {
   url.searchParams.set("utm_content", `footer_${FAMILY_DEST_SLUG[business.id]}`);
   if (business.id === "hub") {
     url.searchParams.set("ref", "mocopb_footer_linkanddink");
+  }
+  const ldPid = readLdVisitorCookie();
+  if (ldPid) {
+    url.searchParams.set("ld_pid", ldPid);
   }
   return url.toString();
 }
