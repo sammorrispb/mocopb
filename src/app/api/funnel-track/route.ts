@@ -5,7 +5,7 @@ type TrackBody = {
   event_type?: string;
   visitor_id?: string;
   email?: string;
-  marketing_ref?: string;
+  marketing_ref?: string | null;
   properties?: Record<string, unknown>;
 };
 
