@@ -102,8 +102,13 @@ export async function POST(request: Request) {
 
     // 4. Fire unified funnel event (fire-and-forget)
     const sourcePage = typeof body.page === "string" ? body.page : "/";
+    const visitorId =
+      typeof body.visitor_id === "string" && body.visitor_id.length > 0
+        ? body.visitor_id
+        : null;
     void sendFunnelEvent({
       eventType: "lead_submitted",
+      visitorId,
       email: cleanEmail,
       marketingRef: getRefSource(sourcePage),
       properties: { interest, source_page: sourcePage },

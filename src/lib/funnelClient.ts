@@ -59,6 +59,16 @@ export function getOrCreateVisitorId(): string {
   return id;
 }
 
+/**
+ * Safe visitor-id accessor for use inside form submit handlers.
+ * Returns null on the server (no document/cookie) so it can be
+ * forwarded as `visitor_id: getVisitorIdForForm()` without branching.
+ */
+export function getVisitorIdForForm(): string | null {
+  if (typeof document === "undefined") return null;
+  return getOrCreateVisitorId();
+}
+
 export function trackEvent<K extends keyof AnalyticsEventMap>(
   name: K,
   props: AnalyticsEventMap[K],
