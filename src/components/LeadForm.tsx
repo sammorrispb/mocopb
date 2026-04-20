@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { getVisitorIdForForm } from "@/lib/funnelClient";
 import { businesses } from "@/lib/businesses";
 import { businessUrl } from "@/lib/tracking";
 
@@ -46,7 +47,11 @@ export function LeadForm({ heading = "What are you looking for?", page = "unknow
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          page,
+          visitor_id: getVisitorIdForForm(),
+        }),
         signal: controller.signal,
       });
 
