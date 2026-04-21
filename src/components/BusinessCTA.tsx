@@ -32,6 +32,12 @@ const defaults: Record<
       "Premier indoor pickleball facilities in Rockville and North Bethesda. Open play, leagues, and events.",
     buttonText: "Visit Dill Dinkers",
   },
+  tournaments: {
+    headline: "Ready to compete?",
+    subtext:
+      "Link & Dink indoor tournaments at Dill Dinkers. Skill-based brackets, round-robin plus playoffs. Every team guaranteed 5+ games.",
+    buttonText: "Find Your Bracket",
+  },
 };
 
 interface BusinessCTAProps {
