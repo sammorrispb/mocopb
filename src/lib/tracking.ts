@@ -39,6 +39,7 @@ const FAMILY_DEST_SLUG: Record<Business["id"], string> = {
   coaching: "sammorrispb",
   nga: "nga",
   dd: "dilldinkers",
+  tournaments: "tournaments",
 };
 
 // SSR-safe reader for the `ld_visitor` cookie set by funnelClient.

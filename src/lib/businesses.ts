@@ -1,5 +1,5 @@
 export interface Business {
-  id: "hub" | "coaching" | "nga" | "dd";
+  id: "hub" | "coaching" | "nga" | "dd" | "tournaments";
   name: string;
   tagline: string;
   description: string;
@@ -39,6 +39,14 @@ export const businesses: Business[] = [
     description: "Premier indoor pickleball facilities in Rockville and North Bethesda. Open play, leagues, and events.",
     url: "https://dilldinkers.com",
     ctaText: "Visit Dill Dinkers",
+  },
+  {
+    id: "tournaments",
+    name: "LD Tournament Series",
+    tagline: "Compete in MoCo",
+    description: "Link & Dink indoor pickleball tournaments at Dill Dinkers. Skill-based brackets, round-robin + playoffs. Every team guaranteed 5+ games.",
+    url: "https://tournamentwebsite.vercel.app",
+    ctaText: "Find Your Bracket",
   },
 ];
 
