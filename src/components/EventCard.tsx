@@ -1,4 +1,3 @@
-import { hubUrl } from "@/lib/tracking";
 import type { Event } from "@/lib/events";
 import { EVENT_TYPE_LABELS } from "@/lib/events";
 
@@ -11,9 +10,7 @@ const TYPE_COLORS: Record<Event["type"], string> = {
 };
 
 export function EventCard({ event }: { event: Event }) {
-  const href = event.hubPath
-    ? hubUrl(event.hubPath, "events_page", event.slug)
-    : event.registrationUrl || "#";
+  const href = event.registrationUrl || "#";
 
   const dateObj = new Date(event.date + "T12:00:00");
   const month = dateObj.toLocaleDateString("en-US", { month: "short" });

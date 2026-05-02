@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { hubUrl } from "@/lib/tracking";
 import { getFeaturedCourts } from "@/lib/courts";
 import { getFeaturedGroups } from "@/lib/groups";
 import { getTopFAQs } from "@/lib/faq";
@@ -9,7 +8,6 @@ import { CourtCard } from "@/components/CourtCard";
 import { GroupCard } from "@/components/GroupCard";
 import { BusinessGrid } from "@/components/BusinessGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
-import { HubCTA } from "@/components/HubCTA";
 import { CityGrid } from "@/components/CityGrid";
 import { LeadForm } from "@/components/LeadForm";
 
@@ -38,14 +36,12 @@ export default function HomePage() {
             >
               Find Courts
             </Link>
-            <a
-              href={hubUrl("/", "hero_cta", "join_button")}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/lessons"
               className="btn-hub px-8 py-3.5 rounded-xl text-base font-bold"
             >
-              Join the Community
-            </a>
+              Book a Lesson
+            </Link>
           </div>
         </div>
       </section>
@@ -158,9 +154,6 @@ export default function HomePage() {
           <LeadForm page="home" />
         </section>
       </AnimateOnScroll>
-
-      {/* Hub CTA */}
-      <HubCTA campaign="home_cta" content="bottom_banner" />
     </>
   );
 }

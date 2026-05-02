@@ -19,7 +19,7 @@ const benefits = [
   { title: "Custom Practice Plans", desc: "Drills and strategies tailored to your goals" },
   { title: "DUPR Evaluations", desc: "Get your official rating from a certified coach" },
   { title: "Flexible Scheduling", desc: "Weekday and weekend availability" },
-  { title: "Indoor Facilities", desc: "Climate-controlled courts at Dill Dinkers" },
+  { title: "Indoor Facilities", desc: "Climate-controlled indoor courts in Montgomery County" },
 ];
 
 export default function LessonsPage() {
@@ -35,7 +35,7 @@ export default function LessonsPage() {
             <span className="gradient-text-moco">Montgomery County</span>
           </h1>
           <p className="text-lg text-text-muted max-w-xl mx-auto mb-8">
-            Work with PPR-certified Coach Sam Morris. Private lessons, group clinics, and skill evaluations for all levels at Dill Dinkers facilities.
+            Work with PPR-certified Coach Sam Morris. Private lessons, group clinics, and skill evaluations for all levels at indoor courts in Montgomery County.
           </p>
           <TrackedExternalLink
             href={coachingUrl}

@@ -6,7 +6,6 @@ import { CourtCard } from "@/components/CourtCard";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { BusinessGrid } from "@/components/BusinessGrid";
 import { FAQAccordion, type FAQItem } from "@/components/FAQAccordion";
-import { HubCTA } from "@/components/HubCTA";
 import { SITE_URL } from "@/lib/constants";
 
 export function generateStaticParams() {
@@ -41,27 +40,22 @@ function getCityFAQs(cityName: string): FAQItem[] {
   return [
     {
       question: `Where can I play pickleball in ${cityName}?`,
-      answer: `There are multiple pickleball courts near ${cityName}, Montgomery County MD. Options include indoor facilities like Dill Dinkers (Rockville and North Bethesda) and free outdoor courts at parks throughout the county. Check our courts directory for addresses, hours, and amenities.`,
+      answer: `There are multiple pickleball courts near ${cityName}, Montgomery County MD. Options include indoor courts in Montgomery County and free outdoor courts at parks throughout the county. Check our courts directory for addresses, hours, and amenities.`,
       cta: { text: "View all courts", href: "/courts" },
     },
     {
       question: `Are there pickleball lessons in ${cityName}?`,
-      answer: `Yes! Coach Sam Morris offers private pickleball lessons and clinics at Dill Dinkers facilities, serving players from ${cityName} and all of Montgomery County. All skill levels welcome — from complete beginners to competitive players.`,
+      answer: `Yes! Coach Sam Morris offers private pickleball lessons and clinics at indoor courts in Montgomery County, serving players from ${cityName} and all of Montgomery County. All skill levels welcome — from complete beginners to competitive players.`,
       cta: { text: "Book a lesson", href: "/lessons" },
     },
     {
       question: `Is there pickleball open play near ${cityName}?`,
-      answer: `Open play is available daily at multiple locations near ${cityName}. Indoor open play runs at Dill Dinkers year-round, and outdoor courts at county parks offer free drop-in play. Morning and evening are the most popular times.`,
+      answer: `Open play is available daily at multiple locations near ${cityName}. Indoor open play runs at indoor courts in Montgomery County year-round, and outdoor courts at county parks offer free drop-in play. Morning and evening are the most popular times.`,
       cta: { text: "Find open play", href: "/open-play" },
     },
     {
-      question: `How do I find pickleball players in ${cityName}?`,
-      answer: `Join the Link & Dink community to connect with 2,000+ pickleball players in Montgomery County. You'll get matched with players near ${cityName} at your skill level and can join local groups.`,
-      cta: { text: "Join the community", href: "https://linkanddink.com?utm_source=mocopb&utm_medium=website&utm_campaign=city_faq_" + cityName.toLowerCase().replace(/ /g, "_") },
-    },
-    {
       question: `Are there youth pickleball programs near ${cityName}?`,
-      answer: `Next Gen Pickleball Academy offers structured youth programs for kids ages 5-16 at Dill Dinkers indoor facilities, easily accessible from ${cityName}. Four skill levels from beginner to advanced competitive.`,
+      answer: `Next Gen Pickleball Academy offers structured youth programs for kids ages 5-16 at indoor courts in Montgomery County, easily accessible from ${cityName}. Four skill levels from beginner to advanced competitive.`,
       cta: { text: "Explore youth programs", href: "/youth" },
     },
   ];
@@ -154,10 +148,6 @@ export default async function CityPage({
                 <h3 className="font-heading font-semibold text-lg text-text-primary mb-1">Youth Programs</h3>
                 <p className="text-sm text-text-muted">Academy for kids ages 5-16</p>
               </Link>
-              <Link href="/find-players" className="card-moco p-5 text-center">
-                <h3 className="font-heading font-semibold text-lg text-text-primary mb-1">Find Players</h3>
-                <p className="text-sm text-text-muted">Connect with 2,000+ local players</p>
-              </Link>
             </div>
           </div>
         </section>
@@ -225,12 +215,6 @@ export default async function CityPage({
         }}
       />
 
-      <HubCTA
-        headline={`Join the ${city.name} pickleball community`}
-        subtext={`Connect with players near ${city.name} and find your next game.`}
-        campaign={`city_${slug}_cta`}
-        content="bottom_banner"
-      />
     </>
   );
 }

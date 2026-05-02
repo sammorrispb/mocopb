@@ -7,33 +7,10 @@ export interface Event {
   description: string;
   type: "tournament" | "social" | "clinic" | "open-play" | "league";
   registrationUrl?: string;
-  hubPath?: string;
   featured: boolean;
 }
 
 export const events: Event[] = [
-  {
-    slug: "spring-league-2026",
-    title: "Spring DUPR League",
-    date: "2026-04-14",
-    time: "6:00 PM - 9:00 PM",
-    location: "Dill Dinkers Rockville",
-    description: "8-week DUPR-rated league. Teams of 4. Monday evenings. All skill levels with divisions.",
-    type: "league",
-    hubPath: "/",
-    featured: true,
-  },
-  {
-    slug: "beginners-welcome-clinic",
-    title: "Beginners Welcome Clinic",
-    date: "2026-04-19",
-    time: "10:00 AM - 12:00 PM",
-    location: "Dill Dinkers North Bethesda",
-    description: "Free intro clinic for brand new players. Paddles provided. Learn the basics in 2 hours.",
-    type: "clinic",
-    hubPath: "/",
-    featured: true,
-  },
   {
     slug: "cabin-john-saturday-social",
     title: "Cabin John Saturday Social",

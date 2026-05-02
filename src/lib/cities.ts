@@ -13,14 +13,14 @@ export const cities: City[] = [
     slug: "rockville",
     name: "Rockville",
     state: "MD",
-    description: "Rockville is a pickleball hotspot with Dill Dinkers' premier indoor facility plus free outdoor courts at Bauer Drive and Mattie Stepanek Park.",
+    description: "Rockville is a pickleball hotspot, home to multiple indoor pickleball courts plus free outdoor courts at Bauer Drive and Mattie Stepanek Park.",
     neighborhoods: ["Twinbrook", "King Farm", "Fallsgrove", "Town Center"],
   },
   {
     slug: "north-bethesda",
     name: "North Bethesda",
     state: "MD",
-    description: "North Bethesda offers indoor pickleball at Dill Dinkers' 9-court facility, making it one of the top places to play year-round in Montgomery County.",
+    description: "North Bethesda is home to indoor pickleball courts, making it one of the top places to play year-round in Montgomery County.",
     neighborhoods: ["Pike & Rose", "White Flint", "Garrett Park"],
   },
   {

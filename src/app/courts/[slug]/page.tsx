@@ -2,11 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { courts, getCourtBySlug } from "@/lib/courts";
-import { HubCTA } from "@/components/HubCTA";
 import { BusinessCTA } from "@/components/BusinessCTA";
-import { TrackedExternalLink } from "@/components/TrackedExternalLink";
-import { businessUrl } from "@/lib/tracking";
-import { getBusinessById } from "@/lib/businesses";
 import { SITE_URL } from "@/lib/constants";
 
 export function generateStaticParams() {
@@ -86,20 +82,9 @@ export default async function CourtDetailPage({
               {court.website && (
                 <div>
                   <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-1">Website</h3>
-                  {court.slug.startsWith("dill-dinkers") ? (
-                    <TrackedExternalLink
-                      href={businessUrl(getBusinessById("dd"), "court_detail_website", court.slug)}
-                      label="Visit website"
-                      page="court_detail"
-                      className="text-court-green hover:underline"
-                    >
-                      Visit website &rarr;
-                    </TrackedExternalLink>
-                  ) : (
-                    <a href={court.website} target="_blank" rel="noopener noreferrer" className="text-court-green hover:underline">
-                      Visit website &rarr;
-                    </a>
-                  )}
+                  <a href={court.website} target="_blank" rel="noopener noreferrer" className="text-court-green hover:underline">
+                    Visit website &rarr;
+                  </a>
                 </div>
               )}
             </div>
@@ -164,20 +149,11 @@ export default async function CourtDetailPage({
         }}
       />
 
-      {court.slug.startsWith("dill-dinkers") ? (
-        <BusinessCTA
-          business="dd"
-          campaign="court_detail_cta"
-          content={court.slug}
-        />
-      ) : (
-        <HubCTA
-          headline={`Play at ${court.name}?`}
-          subtext="Join the community to find playing partners, see upcoming events, and connect with regulars at this court."
-          campaign="court_detail_cta"
-          content={court.slug}
-        />
-      )}
+      <BusinessCTA
+        business="coaching"
+        campaign="court_detail_cta"
+        content={court.slug}
+      />
     </>
   );
 }

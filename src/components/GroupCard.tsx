@@ -1,11 +1,7 @@
-import { hubUrl } from "@/lib/tracking";
 import type { Group } from "@/lib/groups";
 
 export function GroupCard({ group }: { group: Group }) {
-  const href =
-    group.platform === "linkanddink" && group.hubPath
-      ? hubUrl(group.hubPath, "groups_page", group.slug)
-      : group.externalUrl || "#";
+  const href = group.externalUrl || "#";
 
   return (
     <a

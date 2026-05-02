@@ -5,8 +5,6 @@ import {
   ingestToOpenBrain,
   type OpenBrainBusiness,
 } from "@/lib/open-brain-ingest";
-import { sendFunnelEvent } from "@/lib/funnelServer";
-import { getRefSource } from "@/lib/tracking";
 
 const SAM_EMAIL = "sam.morris2131@gmail.com";
 
@@ -14,13 +12,11 @@ const SAM_EMAIL = "sam.morris2131@gmail.com";
 // lead should land in on Open Brain. Keep this in sync with INTEREST_OPTIONS
 // in src/components/LeadForm.tsx.
 const INTEREST_TO_BUSINESS: Record<string, OpenBrainBusiness> = {
-  "open-play": "ld",
-  "find-players": "ld",
+  "open-play": "mocopb",
   "lessons": "coaching",
   "clinics": "coaching",
   "youth": "nga",
-  "leagues": "ld",
-  "facility": "dd",
+  "leagues": "mocopb",
   "other": "mocopb",
 };
 
@@ -98,20 +94,6 @@ export async function POST(request: Request) {
       metadata: {
         source_page: body.page || "unknown",
       },
-    });
-
-    // 4. Fire unified funnel event (fire-and-forget)
-    const sourcePage = typeof body.page === "string" ? body.page : "/";
-    const visitorId =
-      typeof body.visitor_id === "string" && body.visitor_id.length > 0
-        ? body.visitor_id
-        : null;
-    void sendFunnelEvent({
-      eventType: "lead_submitted",
-      visitorId,
-      email: cleanEmail,
-      marketingRef: getRefSource(sourcePage),
-      properties: { interest, source_page: sourcePage },
     });
 
     return NextResponse.json({ ok: true });

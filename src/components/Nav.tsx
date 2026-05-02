@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
-import { hubUrl } from "@/lib/tracking";
 
 export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -30,14 +29,12 @@ export function Nav() {
               {link.label}
             </Link>
           ))}
-          <a
-            href={hubUrl("/", "nav_cta", "join_button")}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/lessons"
             className="btn-hub px-4 py-2 rounded-lg text-sm font-semibold"
           >
-            Join the Community
-          </a>
+            Book a Lesson
+          </Link>
         </div>
 
         {/* Mobile hamburger */}
@@ -72,14 +69,13 @@ export function Nav() {
                 {link.label}
               </Link>
             ))}
-            <a
-              href={hubUrl("/", "nav_cta_mobile", "join_button")}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/lessons"
+              onClick={() => setMobileOpen(false)}
               className="btn-hub px-4 py-3 rounded-lg text-sm font-semibold text-center mt-2"
             >
-              Join the Community
-            </a>
+              Book a Lesson
+            </Link>
           </div>
         </div>
       )}

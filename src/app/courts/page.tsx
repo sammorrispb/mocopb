@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { courts } from "@/lib/courts";
 import { CourtCard } from "@/components/CourtCard";
-import { HubCTA } from "@/components/HubCTA";
 
 export const metadata: Metadata = {
   title: "Pickleball Courts in Montgomery County, MD",
@@ -48,12 +47,6 @@ export default function CourtsPage() {
         </div>
       </section>
 
-      <HubCTA
-        headline="Can't find the right court?"
-        subtext="Join the community to discover hidden gems, get real-time court availability, and connect with players near you."
-        campaign="courts_cta"
-        content="bottom_banner"
-      />
     </>
   );
 }

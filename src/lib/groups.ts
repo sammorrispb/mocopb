@@ -6,37 +6,12 @@ export interface Group {
   skillLevel: string;
   meetingLocation: string;
   frequency: string;
-  platform: "linkanddink" | "facebook" | "whatsapp" | "meetup" | "other";
-  hubPath?: string;
+  platform: "facebook" | "whatsapp" | "meetup" | "other";
   externalUrl?: string;
   featured: boolean;
 }
 
 export const groups: Group[] = [
-  {
-    slug: "dd-rockville-open-play",
-    name: "Dill Dinkers Rockville Open Play",
-    description: "Daily open play sessions at DD Rockville. All skill levels welcome. Reserve your spot through CourtReserve.",
-    memberCount: 350,
-    skillLevel: "All Levels",
-    meetingLocation: "Dill Dinkers Rockville",
-    frequency: "Daily",
-    platform: "linkanddink",
-    hubPath: "/",
-    featured: true,
-  },
-  {
-    slug: "dd-north-bethesda-open-play",
-    name: "Dill Dinkers North Bethesda Open Play",
-    description: "Daily open play sessions at DD North Bethesda. All skill levels. Reserve through CourtReserve.",
-    memberCount: 280,
-    skillLevel: "All Levels",
-    meetingLocation: "Dill Dinkers North Bethesda",
-    frequency: "Daily",
-    platform: "linkanddink",
-    hubPath: "/",
-    featured: true,
-  },
   {
     slug: "cabin-john-morning-crew",
     name: "Cabin John Morning Crew",
@@ -57,7 +32,7 @@ export const groups: Group[] = [
     frequency: "Ongoing",
     platform: "facebook",
     externalUrl: "https://www.facebook.com/groups/mocopickleballmd",
-    featured: false,
+    featured: true,
   },
   {
     slug: "dmv-pickleball",
@@ -68,18 +43,6 @@ export const groups: Group[] = [
     frequency: "Ongoing",
     platform: "facebook",
     externalUrl: "https://www.facebook.com/groups/DMVPickleball",
-    featured: false,
-  },
-  {
-    slug: "link-and-dink-community",
-    name: "Link & Dink Community",
-    description: "The MoCo pickleball community platform. Find players, join groups, track your skill level, and get matched for games.",
-    memberCount: 2000,
-    skillLevel: "All Levels",
-    meetingLocation: "Montgomery County",
-    frequency: "Always on",
-    platform: "linkanddink",
-    hubPath: "/",
     featured: true,
   },
 ];

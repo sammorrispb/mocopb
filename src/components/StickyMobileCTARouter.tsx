@@ -5,10 +5,9 @@ import { StickyMobileCTA } from "./StickyMobileCTA";
 import type { Business } from "@/lib/businesses";
 
 function getBusinessForPath(pathname: string): Business["id"] {
-  if (pathname === "/lessons" || pathname === "/clinics") return "coaching";
   if (pathname === "/youth") return "nga";
-  if (pathname.startsWith("/courts/dill-dinkers-")) return "dd";
-  return "hub";
+  if (pathname === "/leagues" || pathname === "/events") return "tournaments";
+  return "coaching";
 }
 
 export function StickyMobileCTARouter() {
