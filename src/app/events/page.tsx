@@ -5,7 +5,6 @@ import { EventCard } from "@/components/EventCard";
 import { LeadForm } from "@/components/LeadForm";
 import { BusinessGrid } from "@/components/BusinessGrid";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
-import { HubCTA } from "@/components/HubCTA";
 
 export const metadata: Metadata = {
   title: "Pickleball Events in Montgomery County, MD",
@@ -78,12 +77,6 @@ export default function EventsPage() {
         </section>
       </AnimateOnScroll>
 
-      <HubCTA
-        headline="Never miss an event"
-        subtext="Join the community to get notified about tournaments, leagues, and social play near you."
-        campaign="events_cta"
-        content="bottom_banner"
-      />
     </>
   );
 }

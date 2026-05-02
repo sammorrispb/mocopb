@@ -18,27 +18,11 @@ export function businessUrl(
   return url.toString();
 }
 
-// Keep hubUrl for backward compatibility
-export function hubUrl(
-  path: string = "/",
-  campaign: string = "mocopb_general",
-  content?: string,
-): string {
-  const url = new URL(path, "https://linkanddink.com");
-  url.searchParams.set("utm_source", UTM_SOURCE);
-  url.searchParams.set("utm_medium", UTM_MEDIUM);
-  url.searchParams.set("utm_campaign", campaign);
-  if (content) url.searchParams.set("utm_content", content);
-  return url.toString();
-}
-
 // Family reciprocal nav: destination slug per business id. Used by both
 // familyBusinessUrl (utm_content + ref=) and familyMarketingRef.
 const FAMILY_DEST_SLUG: Record<Business["id"], string> = {
-  hub: "linkanddink",
   coaching: "sammorrispb",
   nga: "nga",
-  dd: "dilldinkers",
   tournaments: "tournaments",
 };
 
@@ -61,20 +45,14 @@ function readLdVisitorCookie(): string | null {
 
 // Footer "Our Network" link URL with canonical family-nav UTMs. Matches the
 // cross_family_nav / family_reciprocal scheme used by sibling sites.
-// Also stamps ?ref=mocopb_footer_linkanddink on the Hub target so the Hub
-// landing can pick it up directly (other destinations rely on the funnel
-// event's marketing_ref). When the ld_visitor cookie is present, appends
-// &ld_pid=<cookie> so the destination Hub landing can adopt the anonymous
-// trail across domains (UPJ Phase 2 cross-domain handoff).
+// When the ld_visitor cookie is present, appends &ld_pid=<cookie> so the
+// destination landing can adopt the anonymous trail across domains.
 export function familyBusinessUrl(business: Business): string {
   const url = new URL(business.url);
   url.searchParams.set("utm_source", UTM_SOURCE);
   url.searchParams.set("utm_medium", "cross_family_nav");
   url.searchParams.set("utm_campaign", "family_reciprocal");
   url.searchParams.set("utm_content", `footer_${FAMILY_DEST_SLUG[business.id]}`);
-  if (business.id === "hub") {
-    url.searchParams.set("ref", "mocopb_footer_linkanddink");
-  }
   const ldPid = readLdVisitorCookie();
   if (ldPid) {
     url.searchParams.set("ld_pid", ldPid);
@@ -82,8 +60,8 @@ export function familyBusinessUrl(business: Business): string {
   return url.toString();
 }
 
-// Per-destination marketing_ref for footer "Our Network" clicks so Hub's
-// AdminView journey dashboard sees each sibling as a distinct cohort.
+// Per-destination marketing_ref for footer "Our Network" clicks so each
+// sibling site sees a distinct cohort.
 export function familyMarketingRef(business: Business): string {
   return `mocopb_footer_${FAMILY_DEST_SLUG[business.id]}`;
 }

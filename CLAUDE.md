@@ -1,7 +1,9 @@
 # MoCo PB — CLAUDE.md
 
+**NOTE (2026-05-01):** This site was decoupled from Dill Dinkers / CourtReserve on 2026-05-01 and from the Hub on 2026-05-02. No DD/CR/linkanddink.com references should be re-introduced.
+
 ## What This Is
-Lead generation site for Sam's pickleball businesses. Positioned as a neutral Montgomery County pickleball community resource. Drives traffic to 4 businesses based on visitor intent.
+Lead generation site for Sam's pickleball businesses. Positioned as a neutral Montgomery County pickleball community resource. Drives traffic to Sam-owned businesses based on visitor intent.
 
 ## Ecosystem
 - **Domain**: mocopb.com (GoDaddy registrar, Vercel nameservers)
@@ -9,10 +11,9 @@ Lead generation site for Sam's pickleball businesses. Positioned as a neutral Mo
 - **Deploy**: Vercel (auto-deploy on push to main)
 - **Google Search Console**: Verified (HTML file method)
 - **Funnel targets**:
-  - linkanddink.com (The Hub) — find players, groups, events
   - sammorrispb.com — private lessons, coaching, clinics
   - nextgenacademypb.com — youth programs (ages 5-16)
-  - dilldinkers.com — indoor facility info
+  - tournamentwebsite.vercel.app — LD Tournament Series
 
 ## Stack
 - **Framework**: Next.js 16 (App Router)
@@ -21,33 +22,31 @@ Lead generation site for Sam's pickleball businesses. Positioned as a neutral Mo
 - **Fonts**: Montserrat (headings), Inter (body)
 - **Analytics**: @vercel/analytics + @vercel/speed-insights + custom typed events (src/lib/analytics.ts)
 
-## Key Routes (41 pages)
-- `/` — Homepage (hero, stats, courts, business grid, groups, city grid, FAQ preview, Hub CTA)
-- `/courts` — Court directory (9 courts, indoor/outdoor split)
+## Key Routes
+- `/` — Homepage (hero, stats, courts, business grid, groups, city grid, FAQ preview)
+- `/courts` — Court directory (indoor/outdoor split)
 - `/courts/[slug]` — Individual court detail pages with JSON-LD SportsActivityLocation
 - `/play/[city]` — 9 city landing pages (Rockville, Bethesda, North Bethesda, Potomac, Olney, Germantown, Silver Spring, Wheaton, Gaithersburg) — each with nearby courts, city FAQ, business grid
-- `/groups` — Groups overview (Link & Dink featured)
+- `/groups` — Groups overview
 - `/events` — Events listing
-- `/find-players` — Hub funnel page
-- `/faq` — 18 FAQ items with FAQPage JSON-LD schema (AEO)
+- `/faq` — FAQ items with FAQPage JSON-LD schema (AEO)
 - `/lessons` — Coaching → sammorrispb.com
 - `/clinics` — Group instruction → sammorrispb.com
 - `/youth` — NGA programs → nextgenacademypb.com
-- `/open-play` — Open play guide → Hub + DD
-- `/leagues` — League info → Hub
+- `/open-play` — Open play guide
+- `/leagues` — League info
 
 ## Critical Conventions
 
 ### Tracking
 ALL outbound links to any business MUST use tracked helpers:
 - `businessUrl(business, campaign, content)` from `src/lib/tracking.ts` — for business objects
-- `hubUrl(path, campaign, content)` from `src/lib/tracking.ts` — shorthand for Hub links
 - `TrackedExternalLink` component — wraps `<a>` with analytics event logging
 - NEVER hardcode bare business URLs without UTM params
 
 ### Analytics Events (src/lib/analytics.ts)
 Typed event system using Vercel Analytics:
-- `cta_click` — label, page, destination (hub/coaching/nga/dd)
+- `cta_click` — label, page, destination
 - `lead_form` — action (started/submitted/error), interest, page
 - `external_link` — label, url, page
 - `scroll_depth` — depth (25/50/75/100), page
@@ -62,17 +61,17 @@ Typed event system using Vercel Analytics:
 
 ### Data Layer
 All content lives in typed `src/lib/*.ts` files:
-- `courts.ts` — 9 courts with slugs, addresses, coordinates, amenities
+- `courts.ts` — courts with slugs, addresses, coordinates, amenities
 - `cities.ts` — 9 MoCo cities with descriptions, neighborhoods, nearby court matching
-- `groups.ts` — 6 groups (3 Link & Dink, 2 Facebook, 1 WhatsApp)
+- `groups.ts` — community groups (Facebook, WhatsApp, etc.)
 - `events.ts` — events with type badges and date sorting
-- `faq.ts` — 18 categorized FAQ items with per-answer CTAs routing to appropriate business
-- `businesses.ts` — 4 businesses with id, name, tagline, description, url, ctaText
+- `faq.ts` — categorized FAQ items with per-answer CTAs routing to appropriate business
+- `businesses.ts` — Sam-owned businesses with id, name, tagline, description, url, ctaText
 
 ### Components
 - `AnimateOnScroll` — IntersectionObserver fade-up (one-shot)
 - `FAQAccordion` — ARIA accordion with tracked expansions
-- `BusinessGrid` — 4-business card grid with intent routing
+- `BusinessGrid` — business card grid with intent routing
 - `CityGrid` — 9-city link grid for internal SEO mesh
 - `TrackedExternalLink` — analytics-wrapped external `<a>`
 - `ScrollDepthTracker` — fires events at 25/50/75/100% scroll

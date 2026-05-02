@@ -51,9 +51,6 @@ export function Footer() {
               <li>
                 <Link href="/youth" className="text-sm hover:text-white transition-colors">Youth Academy</Link>
               </li>
-              <li>
-                <Link href="/find-players" className="text-sm hover:text-white transition-colors">Find Players</Link>
-              </li>
             </ul>
           </div>
 

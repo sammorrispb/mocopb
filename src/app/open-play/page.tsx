@@ -3,22 +3,12 @@ import Link from "next/link";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { LeadForm } from "@/components/LeadForm";
 import { BusinessGrid } from "@/components/BusinessGrid";
-import { HubCTA } from "@/components/HubCTA";
 
 export const metadata: Metadata = {
   title: "Pickleball Open Play in Montgomery County, MD",
   description:
-    "Find pickleball open play sessions in Montgomery County, Maryland. Drop-in play at Dill Dinkers, Cabin John, and more. All skill levels welcome.",
+    "Open play options for adult pickleball players in Montgomery County, MD.",
 };
-
-const venues = [
-  { name: "Dill Dinkers Rockville", type: "Indoor", schedule: "Daily sessions — morning, afternoon, evening", notes: "Reserve through CourtReserve. Membership or day pass required.", link: "/courts/dill-dinkers-rockville" },
-  { name: "Dill Dinkers North Bethesda", type: "Indoor", schedule: "Daily sessions — morning, afternoon, evening", notes: "Reserve through CourtReserve. Membership or day pass required.", link: "/courts/dill-dinkers-north-bethesda" },
-  { name: "Cabin John Regional Park", type: "Outdoor", schedule: "Dawn to dusk, daily. Lit courts until 11pm.", notes: "Free. First come, first served. Busy weekends — arrive early.", link: "/courts/cabin-john-regional-park" },
-  { name: "Olney Manor", type: "Outdoor", schedule: "Dawn to dusk, daily. Lit courts until 11pm.", notes: "Free. First come, first served.", link: "/courts/olney-manor-recreational-park" },
-  { name: "Bauer Drive Local Park", type: "Outdoor", schedule: "Dawn to dusk. Lights available evenings.", notes: "Free. Popular morning and evening open play in Rockville.", link: "/courts/bauer-drive-local-park" },
-  { name: "Mattie Stepanek Park", type: "Outdoor", schedule: "Dawn to dusk, daily.", notes: "Free. Open play available in Rockville.", link: "/courts/mattie-stepanek-park" },
-];
 
 export default function OpenPlayPage() {
   return (
@@ -26,38 +16,13 @@ export default function OpenPlayPage() {
       <section className="hero-moco py-16 md:py-24 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="font-heading font-bold text-3xl md:text-5xl text-text-primary mb-4 leading-tight">
-            Pickleball Open Play in{" "}
-            <span className="gradient-text-moco">Montgomery County</span>
+            <span className="gradient-text-moco">Open Play Options</span>
           </h1>
           <p className="text-lg text-text-muted max-w-xl mx-auto mb-8">
-            Drop in, play, and meet other players. Open play is the easiest way to get games and make friends in the MoCo pickleball community.
+            We&apos;re updating our open-play directory for Montgomery County. In the meantime, reach out via the lead form below for current recommendations.
           </p>
         </div>
       </section>
-
-      <AnimateOnScroll>
-        <section className="py-16 px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-heading font-bold text-2xl text-text-primary mb-8">
-              Where to Find Open Play
-            </h2>
-            <div className="space-y-4">
-              {venues.map((v) => (
-                <Link key={v.name} href={v.link} className="card-moco block p-5">
-                  <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-heading font-semibold text-lg text-text-primary">{v.name}</h3>
-                    <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${v.type === "Indoor" ? "badge-indoor" : "badge-outdoor"}`}>
-                      {v.type}
-                    </span>
-                  </div>
-                  <p className="text-sm text-text-muted mb-1">{v.schedule}</p>
-                  <p className="text-xs text-text-muted">{v.notes}</p>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      </AnimateOnScroll>
 
       <AnimateOnScroll>
         <section className="py-12 px-4 bg-section-alt">
@@ -81,7 +46,7 @@ export default function OpenPlayPage() {
             <p className="text-text-muted mb-8">
               Open play is a great start. Here are ways to take your game further.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Link href="/lessons" className="card-moco p-5 text-center hover:border-court-green/30 transition-colors">
                 <h3 className="font-heading font-semibold text-lg text-text-primary mb-1">Lessons</h3>
                 <p className="text-sm text-text-muted">Private coaching to improve faster</p>
@@ -89,10 +54,6 @@ export default function OpenPlayPage() {
               <Link href="/clinics" className="card-moco p-5 text-center hover:border-court-green/30 transition-colors">
                 <h3 className="font-heading font-semibold text-lg text-text-primary mb-1">Clinics</h3>
                 <p className="text-sm text-text-muted">Group clinics for targeted skills</p>
-              </Link>
-              <Link href="/leagues" className="card-moco p-5 text-center hover:border-court-green/30 transition-colors">
-                <h3 className="font-heading font-semibold text-lg text-text-primary mb-1">Leagues</h3>
-                <p className="text-sm text-text-muted">Compete in organized leagues</p>
               </Link>
             </div>
           </div>
@@ -108,13 +69,6 @@ export default function OpenPlayPage() {
       </AnimateOnScroll>
 
       <BusinessGrid />
-
-      <HubCTA
-        headline="Want to find regular playing partners?"
-        subtext="Join the community to connect with players at your level and get notified about open play sessions."
-        campaign="open_play_cta"
-        content="bottom_banner"
-      />
     </>
   );
 }

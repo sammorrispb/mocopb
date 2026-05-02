@@ -4,7 +4,7 @@ import { useState } from "react";
 import { businessUrl } from "@/lib/tracking";
 import { getBusinessById, type Business } from "@/lib/businesses";
 
-export function StickyMobileCTA({ business: businessId = "hub" }: { business?: Business["id"] }) {
+export function StickyMobileCTA({ business: businessId = "coaching" }: { business?: Business["id"] }) {
   const [dismissed, setDismissed] = useState(false);
   const biz = getBusinessById(businessId);
 

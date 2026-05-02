@@ -1,12 +1,10 @@
 "use client";
 
-import { getRefSource } from "./tracking";
-
 export type AnalyticsEventMap = {
   cta_click: {
     label: string;
     page: string;
-    destination: "hub" | "coaching" | "nga" | "dd" | "other" | "internal";
+    destination: "coaching" | "nga" | "tournaments" | "other" | "internal";
   };
   lead_form: {
     action: "started" | "submitted" | "error";
@@ -69,29 +67,14 @@ export function getVisitorIdForForm(): string | null {
   return getOrCreateVisitorId();
 }
 
+// No-op since the unified funnel ingest (Hub) is offline as of 2026-05-02.
+// Visitor cookie + analytics map are kept for future use.
+/* eslint-disable @typescript-eslint/no-unused-vars */
 export function trackEvent<K extends keyof AnalyticsEventMap>(
   name: K,
   props: AnalyticsEventMap[K],
   marketingRefOverride?: string,
 ): void {
-  if (typeof window === "undefined") return;
-  const visitorId = getOrCreateVisitorId();
-  const page_url = window.location.href;
-  const marketing_ref = marketingRefOverride ?? getRefSource(window.location.pathname);
-  const body = JSON.stringify({
-    event_type: name,
-    visitor_id: visitorId,
-    marketing_ref,
-    properties: { ...props, page_url },
-  });
-  try {
-    void fetch("/api/funnel-track", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      keepalive: true,
-      body,
-    }).catch(() => {});
-  } catch {
-    // Never block UI on tracking failure.
-  }
+  // intentionally empty
 }
+/* eslint-enable @typescript-eslint/no-unused-vars */

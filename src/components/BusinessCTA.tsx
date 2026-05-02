@@ -8,12 +8,6 @@ const defaults: Record<
   Business["id"],
   { headline: string; subtext: string; buttonText: string }
 > = {
-  hub: {
-    headline: "Ready to find your next game?",
-    subtext:
-      "Join 2,000+ pickleball players in Montgomery County. Get matched with players at your level, discover groups, and never miss an event.",
-    buttonText: "Join the Community",
-  },
   coaching: {
     headline: "Ready to improve your game?",
     subtext:
@@ -26,16 +20,10 @@ const defaults: Record<
       "Structured programs for kids ages 5-16. Four skill levels from beginner to advanced competitive.",
     buttonText: "Enroll Your Child",
   },
-  dd: {
-    headline: "Ready to play indoors?",
-    subtext:
-      "Premier indoor pickleball facilities in Rockville and North Bethesda. Open play, leagues, and events.",
-    buttonText: "Visit Dill Dinkers",
-  },
   tournaments: {
     headline: "Ready to compete?",
     subtext:
-      "Link & Dink indoor tournaments at Dill Dinkers. Skill-based brackets, round-robin plus playoffs. Every team guaranteed 5+ games.",
+      "Indoor pickleball tournaments in Montgomery County. Skill-based brackets, round-robin plus playoffs. Every team guaranteed 5+ games.",
     buttonText: "Find Your Bracket",
   },
 };
@@ -50,7 +38,7 @@ interface BusinessCTAProps {
 }
 
 export function BusinessCTA({
-  business: businessId = "hub",
+  business: businessId = "coaching",
   headline,
   subtext,
   buttonText,

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { groups } from "@/lib/groups";
 import { GroupCard } from "@/components/GroupCard";
-import { HubCTA } from "@/components/HubCTA";
 
 export const metadata: Metadata = {
   title: "Pickleball Groups in Montgomery County, MD",
@@ -50,13 +49,6 @@ export default function GroupsPage() {
         </div>
       </section>
 
-      <HubCTA
-        headline="Start your own group"
-        subtext="Got a regular crew? Create a group on Link & Dink to organize games, track attendance, and grow your community."
-        buttonText="Create a Group"
-        campaign="groups_cta"
-        content="bottom_banner"
-      />
     </>
   );
 }

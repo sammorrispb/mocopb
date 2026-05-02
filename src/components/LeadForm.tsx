@@ -7,14 +7,12 @@ import { businesses } from "@/lib/businesses";
 import { businessUrl } from "@/lib/tracking";
 
 const INTEREST_OPTIONS = [
-  { value: "open-play", label: "Find Open Play", businessId: "hub" as const },
-  { value: "find-players", label: "Find Playing Partners", businessId: "hub" as const },
+  { value: "open-play", label: "Find Open Play", businessId: "coaching" as const },
   { value: "lessons", label: "Private Lessons / Coaching", businessId: "coaching" as const },
   { value: "clinics", label: "Group Clinics", businessId: "coaching" as const },
   { value: "youth", label: "Youth / Kids Programs", businessId: "nga" as const },
-  { value: "leagues", label: "Leagues & Tournaments", businessId: "hub" as const },
-  { value: "facility", label: "Indoor Facility Info", businessId: "dd" as const },
-  { value: "other", label: "Something Else", businessId: "hub" as const },
+  { value: "leagues", label: "Leagues & Tournaments", businessId: "tournaments" as const },
+  { value: "other", label: "Something Else", businessId: "coaching" as const },
 ];
 
 export function LeadForm({ heading = "What are you looking for?", page = "unknown", defaultInterest }: { heading?: string; page?: string; defaultInterest?: string }) {

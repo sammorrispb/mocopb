@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { allFAQs, faqCategories, getFAQsByCategory } from "@/lib/faq";
 import { FAQAccordion } from "@/components/FAQAccordion";
-import { HubCTA } from "@/components/HubCTA";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 import { SITE_URL } from "@/lib/constants";
 
@@ -59,12 +58,6 @@ export default function FAQPage() {
         }}
       />
 
-      <HubCTA
-        headline="Still have questions?"
-        subtext="Join the MoCo pickleball community and ask 2,000+ local players."
-        campaign="faq_cta"
-        content="bottom_banner"
-      />
     </>
   );
 }
