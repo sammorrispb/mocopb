@@ -26,6 +26,11 @@ export function TrackedExternalLink({
       {...props}
       onClick={(e) => {
         trackEvent(
+          "cta_click",
+          { label, page, destination: href ?? "" },
+          marketingRefOverride,
+        );
+        trackEvent(
           "external_link",
           { label, url: href ?? "", page },
           marketingRefOverride,

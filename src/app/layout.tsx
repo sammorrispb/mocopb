@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Montserrat, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { ScrollDepthTracker } from "@/components/ScrollDepthTracker";
+import { PageViewTracker } from "@/components/PageViewTracker";
+import { UtmCapture } from "@/components/UtmCapture";
 import { StickyMobileCTARouter } from "@/components/StickyMobileCTARouter";
 import { SITE_URL, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/constants";
 import "./globals.css";
@@ -124,7 +127,11 @@ export default function RootLayout({
         </main>
         <Footer />
         <StickyMobileCTARouter />
-        <ScrollDepthTracker />
+        <Suspense fallback={null}>
+          <PageViewTracker />
+        </Suspense>
+        <UtmCapture />
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>

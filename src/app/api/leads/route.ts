@@ -85,14 +85,25 @@ export async function POST(request: Request) {
 
     // 3. Ingest to Open Brain master CRM (fire-and-forget)
     const business = INTEREST_TO_BUSINESS[interest] ?? "mocopb";
+    const incomingUtm = (body && typeof body.utm === "object" && body.utm) || {};
+    const utm = {
+      source: typeof incomingUtm.utm_source === "string" ? incomingUtm.utm_source : undefined,
+      medium: typeof incomingUtm.utm_medium === "string" ? incomingUtm.utm_medium : undefined,
+      campaign: typeof incomingUtm.utm_campaign === "string" ? incomingUtm.utm_campaign : undefined,
+    };
     void ingestToOpenBrain({
       email: cleanEmail,
       name: cleanName,
       business,
       source: "mocopb_form",
       interest,
+      utm: utm.source || utm.medium || utm.campaign ? utm : undefined,
       metadata: {
         source_page: body.page || "unknown",
+        visitor_id: typeof body.visitor_id === "string" ? body.visitor_id : undefined,
+        utm_content: typeof incomingUtm.utm_content === "string" ? incomingUtm.utm_content : undefined,
+        utm_term: typeof incomingUtm.utm_term === "string" ? incomingUtm.utm_term : undefined,
+        ref: typeof incomingUtm.ref === "string" ? incomingUtm.ref : undefined,
       },
     });
 
