@@ -21,7 +21,7 @@ export const businesses: Business[] = [
     name: "Next Gen Academy",
     tagline: "Youth Pickleball",
     description: "Structured programs for kids ages 5-16. Four skill levels from beginner to advanced competitive.",
-    url: "https://www.nextgenacademypb.com",
+    url: "https://www.nextgenpbacademy.com",
     ctaText: "Enroll Your Child",
   },
 ];
