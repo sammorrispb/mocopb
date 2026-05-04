@@ -19,7 +19,7 @@ const levels = [
 ];
 
 export default function YouthPage() {
-  const ngaUrl = "https://www.nextgenacademypb.com?utm_source=mocopb&utm_medium=website&utm_campaign=youth_page";
+  const ngaUrl = "https://www.nextgenpbacademy.com?utm_source=mocopb&utm_medium=website&utm_campaign=youth_page";
 
   return (
     <>

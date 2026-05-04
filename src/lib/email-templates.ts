@@ -105,7 +105,7 @@ export function getWelcomeEmail(name: string, interest: string): EmailTemplate {
             <li><strong>Clear progression</strong> — Kids advance through levels as their skills develop.</li>
           </ul>
           <p>We'd love to set up a free evaluation so we can place your child in the right group.</p>
-          ${cta("Explore Youth Programs", "https://www.nextgenacademypb.com?utm_source=mocopb&utm_medium=email&utm_campaign=welcome_youth")}
+          ${cta("Explore Youth Programs", "https://www.nextgenpbacademy.com?utm_source=mocopb&utm_medium=email&utm_campaign=welcome_youth")}
         `),
       };
 
