@@ -20,12 +20,6 @@ const defaults: Record<
       "Structured programs for kids ages 5-16. Four skill levels from beginner to advanced competitive.",
     buttonText: "Enroll Your Child",
   },
-  tournaments: {
-    headline: "Ready to compete?",
-    subtext:
-      "Indoor pickleball tournaments in Montgomery County. Skill-based brackets, round-robin plus playoffs. Every team guaranteed 5+ games.",
-    buttonText: "Find Your Bracket",
-  },
 };
 
 interface BusinessCTAProps {

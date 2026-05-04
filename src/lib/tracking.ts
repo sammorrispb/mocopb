@@ -23,7 +23,6 @@ export function businessUrl(
 const FAMILY_DEST_SLUG: Record<Business["id"], string> = {
   coaching: "sammorrispb",
   nga: "nga",
-  tournaments: "tournaments",
 };
 
 // SSR-safe reader for the `ld_visitor` cookie set by funnelClient.

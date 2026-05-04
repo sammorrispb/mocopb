@@ -4,7 +4,7 @@ export type AnalyticsEventMap = {
   cta_click: {
     label: string;
     page: string;
-    destination: "coaching" | "nga" | "tournaments" | "other" | "internal";
+    destination: "coaching" | "nga" | "other" | "internal";
   };
   lead_form: {
     action: "started" | "submitted" | "error";

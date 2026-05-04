@@ -2,10 +2,6 @@ import { businesses } from "@/lib/businesses";
 import { businessUrl } from "@/lib/tracking";
 import { TrackedExternalLink } from "./TrackedExternalLink";
 
-// Exclude tournaments from the main 4-card grid — TS is a narrower vertical
-// (bracket play) that lives in the footer "Our Network" family-nav only.
-const CORE_BUSINESSES = businesses.filter((b) => b.id !== "tournaments");
-
 export function BusinessGrid() {
   return (
     <section className="py-16 px-4 bg-section-alt">
@@ -17,7 +13,7 @@ export function BusinessGrid() {
           Whether you&apos;re a beginner or a competitor, we have something for you.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {CORE_BUSINESSES.map((biz) => (
+          {businesses.map((biz) => (
             <TrackedExternalLink
               key={biz.id}
               href={businessUrl(biz, "business_grid", biz.id)}
