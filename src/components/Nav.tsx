@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
+import { trackEvent } from "@/lib/analytics";
 
 export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -31,6 +32,13 @@ export function Nav() {
           ))}
           <Link
             href="/lessons"
+            onClick={() =>
+              trackEvent("cta_click", {
+                label: "Book a Lesson",
+                destination: "/lessons",
+                page: "nav_desktop",
+              })
+            }
             className="btn-hub px-4 py-2 rounded-lg text-sm font-semibold"
           >
             Book a Lesson
@@ -71,7 +79,14 @@ export function Nav() {
             ))}
             <Link
               href="/lessons"
-              onClick={() => setMobileOpen(false)}
+              onClick={() => {
+                trackEvent("cta_click", {
+                  label: "Book a Lesson",
+                  destination: "/lessons",
+                  page: "nav_mobile",
+                });
+                setMobileOpen(false);
+              }}
               className="btn-hub px-4 py-3 rounded-lg text-sm font-semibold text-center mt-2"
             >
               Book a Lesson

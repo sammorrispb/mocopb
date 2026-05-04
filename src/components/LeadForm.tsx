@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { trackEvent } from "@/lib/analytics";
-import { getVisitorIdForForm } from "@/lib/funnelClient";
+import { getUtm, getVisitorIdForForm } from "@/lib/funnelClient";
 import { businesses } from "@/lib/businesses";
 import { businessUrl } from "@/lib/tracking";
 
@@ -26,6 +26,7 @@ export function LeadForm({ heading = "What are you looking for?", page = "unknow
     if (!formStarted.current) {
       formStarted.current = true;
       trackEvent("lead_form", { action: "started", interest: "", page });
+      trackEvent("lead_form_started", { interest: "", page });
     }
   }
 
@@ -49,12 +50,14 @@ export function LeadForm({ heading = "What are you looking for?", page = "unknow
           ...form,
           page,
           visitor_id: getVisitorIdForForm(),
+          utm: getUtm(),
         }),
         signal: controller.signal,
       });
 
       if (!res.ok) throw new Error("Failed to submit");
       trackEvent("lead_form", { action: "submitted", interest: form.interest, page });
+      trackEvent("lead_form_submitted", { interest: form.interest, page });
       setStatus("sent");
     } catch {
       trackEvent("lead_form", { action: "error", interest: form.interest, page });

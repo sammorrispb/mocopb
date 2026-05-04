@@ -10,6 +10,7 @@ import { BusinessGrid } from "@/components/BusinessGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { CityGrid } from "@/components/CityGrid";
 import { LeadForm } from "@/components/LeadForm";
+import { TrackedCTA } from "@/components/TrackedCTA";
 
 export default function HomePage() {
   const featuredCourts = getFeaturedCourts();
@@ -30,18 +31,22 @@ export default function HomePage() {
             Find courts, connect with players, and join the fastest-growing sport in MoCo. Your complete guide to pickleball in Montgomery County, MD.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
+            <TrackedCTA
               href="/courts"
+              label="Find Courts"
+              destination="/courts"
               className="btn-primary px-8 py-3.5 rounded-xl text-base font-bold"
             >
               Find Courts
-            </Link>
-            <Link
+            </TrackedCTA>
+            <TrackedCTA
               href="/lessons"
+              label="Book a Lesson"
+              destination="/lessons"
               className="btn-hub px-8 py-3.5 rounded-xl text-base font-bold"
             >
               Book a Lesson
-            </Link>
+            </TrackedCTA>
           </div>
         </div>
       </section>
