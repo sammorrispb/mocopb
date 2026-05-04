@@ -11,7 +11,7 @@ const INTEREST_OPTIONS = [
   { value: "lessons", label: "Private Lessons / Coaching", businessId: "coaching" as const },
   { value: "clinics", label: "Group Clinics", businessId: "coaching" as const },
   { value: "youth", label: "Youth / Kids Programs", businessId: "nga" as const },
-  { value: "leagues", label: "Leagues & Tournaments", businessId: "tournaments" as const },
+  { value: "leagues", label: "Leagues & Tournaments", businessId: "coaching" as const },
   { value: "other", label: "Something Else", businessId: "coaching" as const },
 ];
 

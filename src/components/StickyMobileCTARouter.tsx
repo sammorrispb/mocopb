@@ -6,7 +6,6 @@ import type { Business } from "@/lib/businesses";
 
 function getBusinessForPath(pathname: string): Business["id"] {
   if (pathname === "/youth") return "nga";
-  if (pathname === "/leagues" || pathname === "/events") return "tournaments";
   return "coaching";
 }
 

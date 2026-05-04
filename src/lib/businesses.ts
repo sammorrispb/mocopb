@@ -1,5 +1,5 @@
 export interface Business {
-  id: "coaching" | "nga" | "tournaments";
+  id: "coaching" | "nga";
   name: string;
   tagline: string;
   description: string;
@@ -23,14 +23,6 @@ export const businesses: Business[] = [
     description: "Structured programs for kids ages 5-16. Four skill levels from beginner to advanced competitive.",
     url: "https://www.nextgenacademypb.com",
     ctaText: "Enroll Your Child",
-  },
-  {
-    id: "tournaments",
-    name: "LD Tournament Series",
-    tagline: "Compete in MoCo",
-    description: "Indoor pickleball tournaments in Montgomery County. Skill-based brackets, round-robin + playoffs. Every team guaranteed 5+ games.",
-    url: "https://tournamentwebsite.vercel.app",
-    ctaText: "Find Your Bracket",
   },
 ];
 
