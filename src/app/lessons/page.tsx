@@ -8,9 +8,9 @@ import { getBusinessById } from "@/lib/businesses";
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Pickleball Lessons in Montgomery County, MD",
+  title: "Pickleball Lessons in Montgomery County, MD — Free Skill Eval to Start",
   description:
-    "Private pickleball lessons and coaching in Montgomery County, Maryland. PPR-certified coach, all skill levels, video analysis, and DUPR skill evaluations.",
+    "Private pickleball lessons in Montgomery County, MD with PPR-certified Coach Sam Morris. Start with a free 30-minute skill evaluation — no commitment. Then decide on lessons.",
 };
 
 const benefits = [
@@ -23,7 +23,8 @@ const benefits = [
 ];
 
 export default function LessonsPage() {
-  const coachingUrl = businessUrl(getBusinessById("coaching"), "lessons_page", "hero", "/programs/coaching");
+  const evalUrl = businessUrl(getBusinessById("coaching"), "lessons_page", "hero_eval", "/evaluation");
+  const coachingUrl = businessUrl(getBusinessById("coaching"), "lessons_page", "hero_lessons", "/programs/coaching");
 
   return (
     <>
@@ -35,16 +36,26 @@ export default function LessonsPage() {
             <span className="gradient-text-moco">Montgomery County</span>
           </h1>
           <p className="text-lg text-text-muted max-w-xl mx-auto mb-8">
-            Work with PPR-certified Coach Sam Morris. Private lessons, group clinics, and skill evaluations for all levels at indoor courts in Montgomery County.
+            Work with PPR-certified Coach Sam Morris. Start with a free 30-minute skill evaluation — no commitment, no upsell. If it&apos;s a fit, book a lesson from there.
           </p>
           <TrackedExternalLink
-            href={coachingUrl}
-            label="Book a Lesson"
+            href={evalUrl}
+            label="Get a Free Eval"
             page="lessons"
-            className="btn-hub px-8 py-3.5 rounded-xl text-base font-bold"
+            className="btn-hub px-8 py-3.5 rounded-xl text-base font-bold inline-block"
           >
-            Book a Lesson
+            Get a Free Eval
           </TrackedExternalLink>
+          <div className="mt-4">
+            <TrackedExternalLink
+              href={coachingUrl}
+              label="See Lesson Options"
+              page="lessons"
+              className="text-sm font-semibold text-court-green hover:underline"
+            >
+              Or see lesson options &rarr;
+            </TrackedExternalLink>
+          </div>
         </div>
       </section>
 

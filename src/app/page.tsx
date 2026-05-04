@@ -41,11 +41,11 @@ export default function HomePage() {
             </TrackedCTA>
             <TrackedCTA
               href="/lessons"
-              label="Book a Lesson"
+              label="Get a Free Eval"
               destination="/lessons"
               className="btn-hub px-8 py-3.5 rounded-xl text-base font-bold"
             >
-              Book a Lesson
+              Get a Free Eval
             </TrackedCTA>
           </div>
         </div>
