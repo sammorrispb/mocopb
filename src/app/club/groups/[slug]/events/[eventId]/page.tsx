@@ -82,12 +82,18 @@ export default async function EventDetailPage({ params }: Props) {
   return (
     <section className="py-10 px-4">
       <div className="max-w-2xl mx-auto">
-        <Link
-          href={`/club/groups/${group.slug}`}
-          className="text-sm text-text-muted hover:text-text-primary"
-        >
-          ← {group.name}
-        </Link>
+        <nav className="text-sm text-text-muted flex flex-wrap items-center gap-1.5">
+          <Link href="/club" className="hover:text-text-primary">
+            ← Club
+          </Link>
+          <span aria-hidden="true">/</span>
+          <Link
+            href={`/club/groups/${group.slug}`}
+            className="hover:text-text-primary"
+          >
+            {group.name}
+          </Link>
+        </nav>
 
         <div className="flex items-start justify-between gap-3 mt-2 mb-4">
           <div>
@@ -182,16 +188,16 @@ export default async function EventDetailPage({ params }: Props) {
         )}
 
         <h2 className="font-heading font-semibold text-lg text-text-primary mb-2">Going</h2>
-        <ul className="mb-4">
+        <ol className="mb-4 list-decimal list-inside">
           {registered.length === 0 && (
-            <li className="text-text-muted text-sm">Nobody yet — be first.</li>
+            <li className="text-text-muted text-sm list-none">Nobody yet — be first.</li>
           )}
           {registered.map((r) => (
             <li key={r.id} className="text-sm py-1">
               {r.profile?.display_name ?? "Player"}
             </li>
           ))}
-        </ul>
+        </ol>
 
         {waitlisted.length > 0 && (
           <>

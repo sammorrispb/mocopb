@@ -28,7 +28,7 @@ export const allFAQs: CategorizedFAQ[] = [
   {
     category: "getting-started",
     question: "How do I start playing pickleball in Montgomery County?",
-    answer: "The easiest way is to show up at a local court during open play hours. Cabin John Regional Park has free outdoor courts that fill up daily with players of every level. If you've never played before, consider a beginner clinic to learn the basics.",
+    answer: "The easiest way is to show up at a local court during open play hours. Bauer Drive Local Park in Rockville has six free dedicated lighted courts that fill up daily with players of every level. If you've never played before, consider a beginner clinic to learn the basics.",
     cta: { text: "Find courts near you", href: "/courts" },
   },
   {
@@ -46,13 +46,13 @@ export const allFAQs: CategorizedFAQ[] = [
   {
     category: "finding-play",
     question: "Where can I play pickleball in Montgomery County?",
-    answer: "Montgomery County has free outdoor courts at multiple facilities including Cabin John Regional Park, Olney Manor, Wheaton Regional Park, and Germantown Recreation Center.",
+    answer: "Montgomery County has free outdoor courts at multiple facilities including Bauer Drive Local Park and Mattie Stepanek Park in Rockville, Olney Mill Neighborhood Park in Olney, and Seven Locks Local Park in the Cabin John area, plus indoor courts at the Germantown Recreation Center.",
     cta: { text: "View all courts", href: "/courts" },
   },
   {
     category: "finding-play",
     question: "Are there free pickleball courts near me?",
-    answer: "Yes! Montgomery County Parks operate free outdoor courts at Cabin John Regional Park (6 courts with lights), Olney Manor (4 courts), and Wheaton Regional Park (4 courts). Courts are first-come, first-served. Arrive early on weekends — they fill up fast.",
+    answer: "Yes! Montgomery County has free dedicated outdoor courts at Bauer Drive Local Park in Rockville (6 lighted courts — MoCo Parks' first dedicated facility), Mattie Stepanek Park in Rockville (4 lighted courts), Olney Mill Neighborhood Park in Olney (4 lighted courts), and Seven Locks Local Park in the Cabin John area (2 courts). Courts are first-come, first-served. Arrive early on weekends — they fill up fast.",
     cta: { text: "Find free courts", href: "/courts" },
   },
   {
@@ -64,7 +64,7 @@ export const allFAQs: CategorizedFAQ[] = [
   {
     category: "finding-play",
     question: "What pickleball groups exist in Montgomery County?",
-    answer: "There are several active pickleball groups in MoCo ranging from casual social play to competitive leagues. Groups meet at Cabin John Regional Park, Olney Manor, Wheaton Regional Park, and other facilities throughout the area.",
+    answer: "There are several active pickleball groups in MoCo ranging from casual social play to competitive leagues. Groups meet at Bauer Drive, Mattie Stepanek Park, Olney Mill, Seven Locks, and other facilities throughout the area.",
     cta: { text: "Browse groups", href: "/groups" },
   },
 
