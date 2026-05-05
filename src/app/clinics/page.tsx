@@ -9,7 +9,7 @@ import { getBusinessById } from "@/lib/businesses";
 export const metadata: Metadata = {
   title: "Pickleball Clinics in Montgomery County, MD",
   description:
-    "Group pickleball clinics in Montgomery County, Maryland. Learn dinking, serving, strategy, and more. All skill levels at indoor courts in Montgomery County.",
+    "Group pickleball clinics in Montgomery County, Maryland. Learn dinking, serving, strategy, and more. All skill levels welcome.",
 };
 
 const clinicTypes = [

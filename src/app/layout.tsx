@@ -39,7 +39,6 @@ export const metadata: Metadata = {
     "pickleball groups montgomery county",
     "find pickleball players near me",
     "pickleball community maryland",
-    "indoor pickleball montgomery county",
     "outdoor pickleball courts moco",
     "pickleball leagues montgomery county",
     "pickleball rockville md",

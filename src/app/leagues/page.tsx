@@ -7,7 +7,7 @@ import { BusinessGrid } from "@/components/BusinessGrid";
 export const metadata: Metadata = {
   title: "Pickleball Leagues in Montgomery County, MD",
   description:
-    "Join DUPR-rated pickleball leagues in Montgomery County, Maryland. Weekly matches at indoor courts in Montgomery County, organized by skill level. Spring, summer, fall, and winter seasons.",
+    "Join DUPR-rated pickleball leagues in Montgomery County, Maryland. Weekly matches organized by skill level. Spring, summer, fall, and winter seasons.",
 };
 
 const seasons = [
@@ -27,7 +27,7 @@ export default function LeaguesPage() {
             <span className="gradient-text-moco">Montgomery County</span>
           </h1>
           <p className="text-lg text-text-muted max-w-xl mx-auto">
-            Competitive, organized play with DUPR ratings. Weekly matches at indoor courts in Montgomery County, organized by skill level.
+            Competitive, organized play with DUPR ratings. Weekly matches in Montgomery County, organized by skill level.
           </p>
         </div>
       </section>
@@ -56,7 +56,7 @@ export default function LeaguesPage() {
           <div className="max-w-3xl mx-auto">
             <h2 className="font-heading font-bold text-xl text-text-primary mb-4">How Leagues Work</h2>
             <div className="space-y-3 text-text-muted">
-              <p>Leagues run 6-8 weeks with weekly matches at indoor courts in Montgomery County. Teams are organized by DUPR rating so you play competitive matches against similar-level players.</p>
+              <p>Leagues run 6-8 weeks with weekly matches in Montgomery County. Teams are organized by DUPR rating so you play competitive matches against similar-level players.</p>
               <p>Each match is DUPR-rated, which means your rating adjusts based on results. It&apos;s the best way to track your improvement and compete against appropriately skilled opponents.</p>
               <p>Don&apos;t have a DUPR rating? No problem — beginners are placed in the introductory division. You can also get a skill evaluation from Coach Sam Morris.</p>
             </div>

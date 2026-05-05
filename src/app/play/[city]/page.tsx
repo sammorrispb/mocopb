@@ -40,22 +40,22 @@ function getCityFAQs(cityName: string): FAQItem[] {
   return [
     {
       question: `Where can I play pickleball in ${cityName}?`,
-      answer: `There are multiple pickleball courts near ${cityName}, Montgomery County MD. Options include indoor courts in Montgomery County and free outdoor courts at parks throughout the county. Check our courts directory for addresses, hours, and amenities.`,
+      answer: `There are multiple pickleball courts near ${cityName}, Montgomery County MD. Free outdoor courts at parks throughout the county. Check our courts directory for addresses, hours, and amenities.`,
       cta: { text: "View all courts", href: "/courts" },
     },
     {
       question: `Are there pickleball lessons in ${cityName}?`,
-      answer: `Yes! Coach Sam Morris offers private pickleball lessons and clinics at indoor courts in Montgomery County, serving players from ${cityName} and all of Montgomery County. All skill levels welcome — from complete beginners to competitive players.`,
+      answer: `Yes! Coach Sam Morris offers private pickleball lessons and clinics, serving players from ${cityName} and all of Montgomery County. All skill levels welcome — from complete beginners to competitive players.`,
       cta: { text: "Book a lesson", href: "/lessons" },
     },
     {
       question: `Is there pickleball open play near ${cityName}?`,
-      answer: `Open play is available daily at multiple locations near ${cityName}. Indoor open play runs at indoor courts in Montgomery County year-round, and outdoor courts at county parks offer free drop-in play. Morning and evening are the most popular times.`,
+      answer: `Open play is available daily at outdoor courts in county parks near ${cityName}. Morning and evening are the most popular times — courts are first-come, first-served.`,
       cta: { text: "Find open play", href: "/open-play" },
     },
     {
       question: `Are there youth pickleball programs near ${cityName}?`,
-      answer: `Next Gen Pickleball Academy offers structured youth programs for kids ages 5-16 at indoor courts in Montgomery County, easily accessible from ${cityName}. Four skill levels from beginner to advanced competitive.`,
+      answer: `Next Gen Pickleball Academy offers structured youth programs for kids ages 5-16 in Montgomery County, easily accessible from ${cityName}. Four skill levels from beginner to advanced competitive.`,
       cta: { text: "Explore youth programs", href: "/youth" },
     },
   ];
