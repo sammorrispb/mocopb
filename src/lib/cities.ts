@@ -13,21 +13,21 @@ export const cities: City[] = [
     slug: "rockville",
     name: "Rockville",
     state: "MD",
-    description: "Rockville is a pickleball hotspot, home to multiple indoor pickleball courts plus free outdoor courts at Bauer Drive and Mattie Stepanek Park.",
+    description: "Rockville is a pickleball hotspot, home to free outdoor courts at Bauer Drive and Mattie Stepanek Park, with strong open-play communities.",
     neighborhoods: ["Twinbrook", "King Farm", "Fallsgrove", "Town Center"],
   },
   {
     slug: "north-bethesda",
     name: "North Bethesda",
     state: "MD",
-    description: "North Bethesda is home to indoor pickleball courts, making it one of the top places to play year-round in Montgomery County.",
+    description: "North Bethesda players are minutes from Cabin John Regional Park's outdoor courts and active MoCo open-play groups.",
     neighborhoods: ["Pike & Rose", "White Flint", "Garrett Park"],
   },
   {
     slug: "bethesda",
     name: "Bethesda",
     state: "MD",
-    description: "Bethesda players enjoy easy access to Cabin John Regional Park's 6 outdoor courts and multiple indoor options nearby in Rockville and North Bethesda.",
+    description: "Bethesda players enjoy easy access to Cabin John Regional Park's 6 outdoor courts and a vibrant local pickleball community.",
     neighborhoods: ["Downtown Bethesda", "Cabin John", "Glen Echo"],
   },
   {
@@ -48,7 +48,7 @@ export const cities: City[] = [
     slug: "germantown",
     name: "Germantown",
     state: "MD",
-    description: "Germantown Recreation Center offers indoor pickleball with county programs and open play sessions for all skill levels.",
+    description: "Germantown players have access to county-park courts and Recreation Center programs for all skill levels.",
     neighborhoods: ["Clarksburg", "Boyds", "Damascus"],
   },
   {

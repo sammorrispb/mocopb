@@ -8,7 +8,7 @@ import { SITE_URL } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Youth Pickleball Programs in Montgomery County, MD",
   description:
-    "Next Gen Pickleball Academy: structured youth programs for kids ages 5-16 in Montgomery County, Maryland. Four skill levels, certified coaches, indoor facilities.",
+    "Next Gen Pickleball Academy: structured youth programs for kids ages 5-16 in Montgomery County, Maryland. Four skill levels, certified coaches.",
 };
 
 const levels = [
@@ -30,7 +30,7 @@ export default function YouthPage() {
             <span className="gradient-text-moco">Montgomery County</span>
           </h1>
           <p className="text-lg text-text-muted max-w-xl mx-auto mb-8">
-            Next Gen Pickleball Academy offers structured programs for kids ages 5-16 at indoor courts in Montgomery County. The only dedicated youth academy in MoCo.
+            Next Gen Pickleball Academy offers structured programs for kids ages 5-16 in Montgomery County.
           </p>
           <TrackedExternalLink
             href={ngaUrl}

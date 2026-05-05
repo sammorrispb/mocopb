@@ -29,7 +29,7 @@ export default function OpenPlayPage() {
           <div className="max-w-3xl mx-auto">
             <h2 className="font-heading font-bold text-xl text-text-primary mb-4">What to Expect at Open Play</h2>
             <div className="space-y-3 text-text-muted">
-              <p>Open play is drop-in pickleball — no reservation needed at outdoor courts (indoor facilities may require booking). Players typically place their paddles in a queue and rotate partners every game.</p>
+              <p>Open play is drop-in pickleball — no reservation needed at outdoor courts. Players typically place their paddles in a queue and rotate partners every game.</p>
               <p>Most sessions welcome all skill levels, though some facilities offer level-specific open play times. Bring your own paddle, water, and court shoes. Many venues have loaner paddles for beginners.</p>
               <p>Open play etiquette: rotate partners, call your own lines honestly, and keep games moving. It&apos;s the most social way to play.</p>
             </div>

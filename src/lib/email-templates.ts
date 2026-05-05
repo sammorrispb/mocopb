@@ -53,7 +53,7 @@ export function getWelcomeEmail(name: string, interest: string): EmailTemplate {
       return {
         subject: "Welcome! Let's level up your pickleball game",
         html: wrap(name, `
-          <p>Great decision — private coaching is the fastest way to improve. I offer lessons at indoor courts in Montgomery County.</p>
+          <p>Great decision — private coaching is the fastest way to improve. I offer lessons around Montgomery County.</p>
           <p><strong>What to expect:</strong></p>
           <ul>
             <li><strong>Video analysis</strong> — I record key drills so you can see your technique from a coach's perspective.</li>
@@ -87,7 +87,7 @@ export function getWelcomeEmail(name: string, interest: string): EmailTemplate {
             <li><strong>Serve &amp; return</strong> — Build a reliable serve</li>
             <li><strong>Strategy &amp; match play</strong> — For intermediate to advanced players</li>
           </ul>
-          <p>Clinics run at indoor courts in Montgomery County. Check the schedule for upcoming sessions.</p>
+          <p>Clinics run in Montgomery County. Check the schedule for upcoming sessions.</p>
           ${cta("View Upcoming Clinics", "https://www.sammorrispb.com/programs?utm_source=mocopb&utm_medium=email&utm_campaign=welcome_clinics")}
         `),
       };
@@ -100,7 +100,6 @@ export function getWelcomeEmail(name: string, interest: string): EmailTemplate {
           <p><strong>How it works:</strong></p>
           <ul>
             <li><strong>Ages 5-16</strong> — Four skill levels (Red, Orange, Green, Yellow) ensure your child progresses at the right pace.</li>
-            <li><strong>Indoor facilities</strong> — Climate-controlled courts in Montgomery County. No weather cancellations.</li>
             <li><strong>Certified coaches</strong> — Led by Coach Sam Morris (PPR certified, M.S. in Coaching).</li>
             <li><strong>Clear progression</strong> — Kids advance through levels as their skills develop.</li>
           </ul>
@@ -113,7 +112,7 @@ export function getWelcomeEmail(name: string, interest: string): EmailTemplate {
       return {
         subject: "Welcome! Pickleball leagues in Montgomery County",
         html: wrap(name, `
-          <p>Leagues are the best way to play competitive, organized pickleball. DUPR-rated leagues run at indoor courts in Montgomery County throughout the year.</p>
+          <p>Leagues are the best way to play competitive, organized pickleball. DUPR-rated leagues run in Montgomery County throughout the year.</p>
           <p><strong>What you need to know:</strong></p>
           <ul>
             <li><strong>Seasons</strong> — Spring, Summer, Fall, and Winter leagues (6-8 weeks each).</li>
@@ -132,8 +131,8 @@ export function getWelcomeEmail(name: string, interest: string): EmailTemplate {
           <p>Thanks for reaching out! Montgomery County has an amazing pickleball community and I'm happy to help you find what you're looking for.</p>
           <p><strong>Here are some ways to get started:</strong></p>
           <ul>
-            <li><a href="https://mocopb.com/courts?utm_source=email&utm_medium=welcome&utm_campaign=other" style="color:#0d7c5f;"><strong>Find courts</strong></a> — Indoor and outdoor facilities across MoCo</li>
-            <li><a href="https://mocopb.com/open-play?utm_source=email&utm_medium=welcome&utm_campaign=other" style="color:#0d7c5f;"><strong>Open play</strong></a> — Drop in and play at indoor or free outdoor courts</li>
+            <li><a href="https://mocopb.com/courts?utm_source=email&utm_medium=welcome&utm_campaign=other" style="color:#0d7c5f;"><strong>Find courts</strong></a> — Outdoor facilities across MoCo</li>
+            <li><a href="https://mocopb.com/open-play?utm_source=email&utm_medium=welcome&utm_campaign=other" style="color:#0d7c5f;"><strong>Open play</strong></a> — Drop in and play at free outdoor courts</li>
             <li><a href="https://mocopb.com/lessons?utm_source=email&utm_medium=welcome&utm_campaign=other" style="color:#0d7c5f;"><strong>Lessons</strong></a> — Private coaching for all skill levels</li>
             <li><a href="https://mocopb.com/youth?utm_source=email&utm_medium=welcome&utm_campaign=other" style="color:#0d7c5f;"><strong>Youth programs</strong></a> — Academy for kids ages 5-16</li>
           </ul>
