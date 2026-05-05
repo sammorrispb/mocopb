@@ -182,16 +182,16 @@ export default async function EventDetailPage({ params }: Props) {
         )}
 
         <h2 className="font-heading font-semibold text-lg text-text-primary mb-2">Going</h2>
-        <ul className="mb-4">
+        <ol className="mb-4 list-decimal list-inside">
           {registered.length === 0 && (
-            <li className="text-text-muted text-sm">Nobody yet — be first.</li>
+            <li className="text-text-muted text-sm list-none">Nobody yet — be first.</li>
           )}
           {registered.map((r) => (
             <li key={r.id} className="text-sm py-1">
               {r.profile?.display_name ?? "Player"}
             </li>
           ))}
-        </ul>
+        </ol>
 
         {waitlisted.length > 0 && (
           <>
