@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
+import { createClient } from "@supabase/supabase-js";
 
 export async function createClubServerClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -32,7 +33,11 @@ export function createClubServiceClient() {
   if (!url || !service) {
     throw new Error("Missing NEXT_PUBLIC_SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY");
   }
-  return createServerClient(url, service, {
-    cookies: { getAll: () => [], setAll: () => {} },
+  // Use the plain supabase-js client (not @supabase/ssr) for service-role calls.
+  // The SSR helper expects cookie/session context and can attach a stale
+  // Authorization that overlays the service-role key — leading to RLS-filtered
+  // empty results even though we passed the service key as the second arg.
+  return createClient(url, service, {
+    auth: { autoRefreshToken: false, persistSession: false },
   });
 }
