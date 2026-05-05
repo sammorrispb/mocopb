@@ -9,13 +9,16 @@ export async function GET() {
     has_service: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
   };
 
-  // Decode the role claim from the SUPABASE_SERVICE_ROLE_KEY JWT to confirm
-  // the value isn't the anon key by mistake.
+  // Decode the role + ref claims from the SUPABASE_SERVICE_ROLE_KEY JWT.
   let serviceRoleClaim = "unknown";
+  let serviceRefClaim = "unknown";
+  let urlHostHead = "unknown";
   try {
     const tok = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
     const payload = JSON.parse(Buffer.from(tok.split(".")[1] ?? "", "base64").toString());
     serviceRoleClaim = String(payload.role ?? "missing");
+    serviceRefClaim = String(payload.ref ?? "missing");
+    urlHostHead = (process.env.NEXT_PUBLIC_SUPABASE_URL ?? "").replace(/^https?:\/\//, "").split(".")[0];
   } catch {
     serviceRoleClaim = "parse-failed";
   }
@@ -48,6 +51,9 @@ export async function GET() {
   return NextResponse.json({
     env,
     serviceRoleClaim,
+    serviceRefClaim,
+    urlHostHead,
+    refMatches: serviceRefClaim === urlHostHead,
     openGroupsCount,
     openGroupsError,
     publicEventsCount,
