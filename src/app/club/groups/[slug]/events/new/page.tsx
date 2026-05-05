@@ -97,7 +97,7 @@ export default async function NewEventPage({ params }: Props) {
             label="Location"
             name="location"
             required
-            placeholder="e.g. Olney Manor — Court 3"
+            placeholder="e.g. Bauer Drive — Court 3"
           />
           <div className="grid grid-cols-2 gap-3">
             <Field label="Starts" name="starts_at" type="datetime-local" required defaultValue={defaultStart} />

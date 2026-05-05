@@ -43,7 +43,7 @@ export function getWelcomeEmail(name: string, interest: string): EmailTemplate {
           <p><strong>Here's how to get started:</strong></p>
           <ul>
             <li><strong>Indoor (year-round):</strong> Indoor courts in Montgomery County run regular open play sessions. Check the venue's reservation system for current schedules.</li>
-            <li><strong>Outdoor (free):</strong> Cabin John Regional Park, Bauer Drive, and Mattie Stepanek Park in Rockville have free courts. Morning and evening are the most active times.</li>
+            <li><strong>Outdoor (free):</strong> Bauer Drive Local Park (6 dedicated lighted courts) and Mattie Stepanek Park (4 lighted courts) in Rockville, plus Olney Mill Neighborhood Park in Olney, are free dedicated facilities. Morning and evening are the most active times.</li>
           </ul>
           ${cta("Find Open Play Near You", "https://mocopb.com/open-play?utm_source=email&utm_medium=welcome&utm_campaign=open_play")}
         `),
