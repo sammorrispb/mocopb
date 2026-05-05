@@ -119,9 +119,9 @@ export default async function ClubDashboard() {
 
         <h2 className="font-heading font-semibold text-xl text-text-primary mb-3">Upcoming events</h2>
         {upcoming.length === 0 ? (
-          <p className="text-text-muted">No upcoming events.</p>
+          <p className="text-text-muted mb-10">No upcoming events.</p>
         ) : (
-          <ul className="space-y-2">
+          <ul className="space-y-2 mb-10">
             {upcoming.map((e) => (
               <li key={e.id}>
                 <Link
@@ -151,6 +151,56 @@ export default async function ClubDashboard() {
             ))}
           </ul>
         )}
+
+        <div className="rounded-xl border border-court-green/20 bg-section-alt p-6">
+          <h2 className="font-heading font-semibold text-xl text-text-primary mb-1">
+            Start your own group in 3 steps
+          </h2>
+          <p className="text-text-muted text-sm mb-5">
+            Free to run. Built for crews of any size — drop-in, league, ladder, kids&apos; clinic.
+          </p>
+          <ol className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+            <li className="flex gap-3">
+              <span className="shrink-0 h-7 w-7 rounded-full bg-court-green text-white text-sm font-bold flex items-center justify-center">
+                1
+              </span>
+              <div>
+                <div className="font-semibold text-text-primary">Name your group</div>
+                <p className="text-sm text-text-muted mt-0.5">
+                  Add a description and skill level so the right players join.
+                </p>
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <span className="shrink-0 h-7 w-7 rounded-full bg-court-green text-white text-sm font-bold flex items-center justify-center">
+                2
+              </span>
+              <div>
+                <div className="font-semibold text-text-primary">Schedule sessions</div>
+                <p className="text-sm text-text-muted mt-0.5">
+                  Pick a court, time, and capacity. Waitlists are automatic.
+                </p>
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <span className="shrink-0 h-7 w-7 rounded-full bg-court-green text-white text-sm font-bold flex items-center justify-center">
+                3
+              </span>
+              <div>
+                <div className="font-semibold text-text-primary">Share the link</div>
+                <p className="text-sm text-text-muted mt-0.5">
+                  Players RSVP and you get a clean roster — no spreadsheets.
+                </p>
+              </div>
+            </li>
+          </ol>
+          <Link
+            href="/club/groups/new"
+            className="inline-block rounded-lg bg-court-green px-4 py-2 text-sm font-semibold text-white hover:bg-court-green/90"
+          >
+            Create a group →
+          </Link>
+        </div>
       </div>
     </section>
   );

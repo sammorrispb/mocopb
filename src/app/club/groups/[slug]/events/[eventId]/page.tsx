@@ -14,12 +14,19 @@ type Props = { params: Promise<{ slug: string; eventId: string }> };
 
 async function rsvp(formData: FormData) {
   "use server";
-  const { supabase } = await requireClubUser();
+  const { user, supabase } = await requireClubUser();
   const eventId = String(formData.get("event_id"));
   const slug = String(formData.get("slug"));
   const action = String(formData.get("action"));
+  const displayName = formData.get("display_name")?.toString().trim() ?? "";
 
   if (action === "register") {
+    if (displayName.length >= 1 && displayName.length <= 60) {
+      await supabase
+        .from("club_profiles")
+        .update({ display_name: displayName })
+        .eq("id", user.id);
+    }
     await supabase.rpc("club_register_for_event", { p_event_id: eventId });
   } else if (action === "cancel") {
     await supabase.rpc("club_cancel_registration", { p_event_id: eventId });
@@ -58,6 +65,16 @@ export default async function EventDetailPage({ params }: Props) {
     .maybeSingle<{ role: GroupMemberRole }>();
   if (!membership) notFound();
   const isAdmin = membership.role === "admin";
+
+  const { data: myProfile } = await supabase
+    .from("club_profiles")
+    .select("display_name")
+    .eq("id", user.id)
+    .maybeSingle<{ display_name: string }>();
+
+  const emailLocal = user.email?.split("@")[0] ?? "";
+  const isDefaultName =
+    !myProfile?.display_name || myProfile.display_name === emailLocal;
 
   const { data: regs } = await supabase
     .from("club_event_registrations")
@@ -129,45 +146,75 @@ export default async function EventDetailPage({ params }: Props) {
         )}
 
         <div className="card-moco p-4 mb-6">
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <div className="text-sm text-text-muted">
-                {registered.length} / {event.capacity} registered
-                {waitlisted.length > 0 && ` · ${waitlisted.length} waitlisted`}
-              </div>
-              {myReg && (
-                <div className="mt-1 text-sm font-semibold text-text-primary">
-                  You: {myReg.status}
-                  {myReg.status === "waitlisted" && myReg.position
-                    ? ` (#${myReg.position})`
-                    : null}
+          {(() => {
+            const userIsRegistered =
+              !!myReg && (myReg.status === "registered" || myReg.status === "waitlisted");
+            const showNameInput = !isCancelledEvent && !userIsRegistered && isDefaultName;
+            return (
+              <>
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <div className="text-sm text-text-muted">
+                      {registered.length} / {event.capacity} registered
+                      {waitlisted.length > 0 && ` · ${waitlisted.length} waitlisted`}
+                    </div>
+                    {myReg && (
+                      <div className="mt-1 text-sm font-semibold text-text-primary">
+                        You: {myReg.status}
+                        {myReg.status === "waitlisted" && myReg.position
+                          ? ` (#${myReg.position})`
+                          : null}
+                      </div>
+                    )}
+                  </div>
+                  {!isCancelledEvent && (
+                    <form action={rsvp} className="flex flex-col sm:flex-row sm:items-end gap-2 w-full sm:w-auto">
+                      <input type="hidden" name="event_id" value={event.id} />
+                      <input type="hidden" name="slug" value={group.slug} />
+                      {showNameInput && (
+                        <label className="flex flex-col text-xs text-text-muted">
+                          <span className="mb-1 font-semibold text-text-primary">
+                            Your name
+                          </span>
+                          <input
+                            type="text"
+                            name="display_name"
+                            required
+                            minLength={1}
+                            maxLength={60}
+                            placeholder="So others recognize you"
+                            className="rounded-lg border border-gray-300 px-3 py-2 text-sm text-text-primary focus:border-court-green focus:outline-none focus:ring-1 focus:ring-court-green"
+                          />
+                        </label>
+                      )}
+                      {userIsRegistered ? (
+                        <button
+                          name="action"
+                          value="cancel"
+                          className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold text-text-primary hover:border-red-300 hover:text-red-600"
+                        >
+                          Cancel RSVP
+                        </button>
+                      ) : (
+                        <button
+                          name="action"
+                          value="register"
+                          className="rounded-lg bg-court-green px-4 py-2 text-sm font-semibold text-white hover:bg-court-green/90"
+                        >
+                          {isFull ? "Join waitlist" : "RSVP"}
+                        </button>
+                      )}
+                    </form>
+                  )}
                 </div>
-              )}
-            </div>
-            {!isCancelledEvent && (
-              <form action={rsvp}>
-                <input type="hidden" name="event_id" value={event.id} />
-                <input type="hidden" name="slug" value={group.slug} />
-                {myReg && (myReg.status === "registered" || myReg.status === "waitlisted") ? (
-                  <button
-                    name="action"
-                    value="cancel"
-                    className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold text-text-primary hover:border-red-300 hover:text-red-600"
-                  >
-                    Cancel RSVP
-                  </button>
-                ) : (
-                  <button
-                    name="action"
-                    value="register"
-                    className="rounded-lg bg-court-green px-4 py-2 text-sm font-semibold text-white hover:bg-court-green/90"
-                  >
-                    {isFull ? "Join waitlist" : "RSVP"}
-                  </button>
+                {showNameInput && (
+                  <p className="mt-3 text-xs text-text-muted">
+                    Pick a name your group will recognize. You can change it later in your profile.
+                  </p>
                 )}
-              </form>
-            )}
-          </div>
+              </>
+            );
+          })()}
         </div>
 
         {isAdmin && (
