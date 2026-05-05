@@ -82,12 +82,18 @@ export default async function EventDetailPage({ params }: Props) {
   return (
     <section className="py-10 px-4">
       <div className="max-w-2xl mx-auto">
-        <Link
-          href={`/club/groups/${group.slug}`}
-          className="text-sm text-text-muted hover:text-text-primary"
-        >
-          ← {group.name}
-        </Link>
+        <nav className="text-sm text-text-muted flex flex-wrap items-center gap-1.5">
+          <Link href="/club" className="hover:text-text-primary">
+            ← Club
+          </Link>
+          <span aria-hidden="true">/</span>
+          <Link
+            href={`/club/groups/${group.slug}`}
+            className="hover:text-text-primary"
+          >
+            {group.name}
+          </Link>
+        </nav>
 
         <div className="flex items-start justify-between gap-3 mt-2 mb-4">
           <div>
