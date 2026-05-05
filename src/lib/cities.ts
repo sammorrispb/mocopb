@@ -34,7 +34,7 @@ export const cities: City[] = [
     slug: "potomac",
     name: "Potomac",
     state: "MD",
-    description: "Potomac residents are close to Westleigh Recreation Club (private, dedicated lighted courts) in North Potomac and Buck Branch Neighborhood Park (free, striped on tennis) for drop-in play.",
+    description: "Potomac residents have Buck Branch Neighborhood Park (free, striped on tennis) for drop-in play, plus easy reach to Seven Locks Local Park, Bauer Drive, and Mattie Stepanek Park.",
     neighborhoods: ["North Potomac", "Travilah", "Darnestown"],
   },
   {

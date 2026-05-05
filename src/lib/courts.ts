@@ -281,22 +281,7 @@ export const courts: Court[] = [
     notes: "Free. Four BYO-net pickleball courts striped on tennis — adjacent to Glenview Mansion.",
   },
 
-  // ─── Outdoor — private clubs ──────────────────────────────────────
-  {
-    slug: "westleigh-recreation-club",
-    name: "Westleigh Recreation Club",
-    type: "outdoor",
-    address: "14900 Dufief Mill Road",
-    city: "North Potomac",
-    zip: "20878",
-    coordinates: { lat: 39.0963, lng: -77.1962 },
-    courtCount: 4,
-    surface: "Dedicated lighted pickleball courts",
-    amenities: ["Lights", "Parking", "Restrooms"],
-    hours: "Members only — check with club for hours",
-    website: "https://www.westleighclub.com",
-    notes: "Private club. Dedicated lighted pickleball courts. Membership tiers available.",
-  },
+  // ─── Outdoor — private clubs / YMCA ───────────────────────────────
   {
     slug: "ymca-bethesda-chevy-chase",
     name: "YMCA Bethesda-Chevy Chase",
