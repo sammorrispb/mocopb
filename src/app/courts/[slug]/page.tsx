@@ -1,9 +1,53 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { courts, getCourtBySlug } from "@/lib/courts";
+import { courts, getCourtBySlug, type Court } from "@/lib/courts";
 import { BusinessCTA } from "@/components/BusinessCTA";
 import { SITE_URL } from "@/lib/constants";
+
+function buildCourtJsonLd(court: Court) {
+  const url = `${SITE_URL}/courts/${court.slug}`;
+  const notes = court.notes?.toLowerCase() ?? "";
+  const isFree = notes.includes("free.");
+  const isPrivate =
+    notes.includes("private club") ||
+    notes.includes("members") ||
+    notes.includes("ymca");
+
+  const description =
+    court.notes ??
+    `${court.courtCount} ${court.type} pickleball courts at ${court.name} in ${court.city}, Montgomery County, MD.`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "@id": url,
+    name: court.name,
+    description,
+    url,
+    sport: "Pickleball",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: court.address,
+      addressLocality: court.city,
+      addressRegion: "MD",
+      postalCode: court.zip,
+      addressCountry: "US",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: court.coordinates.lat,
+      longitude: court.coordinates.lng,
+    },
+    ...(isFree && !isPrivate ? { isAccessibleForFree: true } : {}),
+    ...(isPrivate ? { isAccessibleForFree: false } : {}),
+    amenityFeature: court.amenities.map((a) => ({
+      "@type": "LocationFeatureSpecification",
+      name: a,
+      value: true,
+    })),
+  };
+}
 
 export function generateStaticParams() {
   return courts.map((court) => ({ slug: court.slug }));
@@ -126,26 +170,7 @@ export default async function CourtDetailPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SportsActivityLocation",
-            name: court.name,
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: court.address,
-              addressLocality: court.city,
-              addressRegion: "MD",
-              postalCode: court.zip,
-              addressCountry: "US",
-            },
-            geo: {
-              "@type": "GeoCoordinates",
-              latitude: court.coordinates.lat,
-              longitude: court.coordinates.lng,
-            },
-            url: `${SITE_URL}/courts/${court.slug}`,
-            sport: "Pickleball",
-          }),
+          __html: JSON.stringify(buildCourtJsonLd(court)),
         }}
       />
 
