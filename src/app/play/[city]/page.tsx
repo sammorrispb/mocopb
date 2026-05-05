@@ -22,7 +22,7 @@ export async function generateMetadata({
   if (!city) return {};
   return {
     title: `Pickleball in ${city.name}, MD — Courts, Lessons & Open Play`,
-    description: `Find pickleball courts, lessons, open play, and groups in ${city.name}, Montgomery County MD. Indoor and outdoor courts, leagues, clinics, and a community of 2,000+ players.`,
+    description: `Find pickleball courts, lessons, open play, and groups in ${city.name}, Montgomery County MD. Outdoor courts, leagues, clinics, and a community of 2,000+ players.`,
     keywords: [
       `pickleball ${city.name.toLowerCase()} md`,
       `pickleball near me ${city.name.toLowerCase()}`,
