@@ -1,7 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireClubUser } from "@/lib/club/auth";
-import type { ClubEvent, ClubGroup, GroupMemberRole } from "@/lib/club/types";
+import { GroupChat } from "@/components/club/GroupChat";
+import type {
+  ClubEvent,
+  ClubGroup,
+  ClubGroupMessage,
+  ClubProfile,
+  GroupMemberRole,
+} from "@/lib/club/types";
 
 type GroupPageProps = { params: Promise<{ slug: string }> };
 
@@ -39,6 +46,27 @@ export default async function GroupHomePage({ params }: GroupPageProps) {
     .select("user_id", { count: "exact", head: true })
     .eq("group_id", group.id);
 
+  // Last 50 chat messages (oldest→newest order in UI).
+  const { data: messageRows } = await supabase
+    .from("club_group_messages")
+    .select("id, group_id, user_id, body, created_at, profile:club_profiles(display_name)")
+    .eq("group_id", group.id)
+    .order("created_at", { ascending: false })
+    .limit(50)
+    .returns<
+      (ClubGroupMessage & { profile: Pick<ClubProfile, "display_name"> | null })[]
+    >();
+  const initialMessages = (messageRows ?? [])
+    .reverse()
+    .map((m) => ({
+      id: m.id,
+      group_id: m.group_id,
+      user_id: m.user_id,
+      body: m.body,
+      created_at: m.created_at,
+      display_name: m.profile?.display_name ?? "Player",
+    }));
+
   return (
     <section className="py-10 px-4">
       <div className="max-w-3xl mx-auto">
@@ -69,6 +97,19 @@ export default async function GroupHomePage({ params }: GroupPageProps) {
             )}
           </div>
         </div>
+
+        <h2 className="font-heading font-semibold text-xl text-text-primary mb-3">Group chat</h2>
+        {membership ? (
+          <div className="mb-8">
+            <GroupChat
+              groupId={group.id}
+              currentUserId={user.id}
+              initialMessages={initialMessages}
+            />
+          </div>
+        ) : (
+          <p className="text-text-muted mb-8 text-sm">Join the group to chat.</p>
+        )}
 
         <h2 className="font-heading font-semibold text-xl text-text-primary mb-3">
           Upcoming events
