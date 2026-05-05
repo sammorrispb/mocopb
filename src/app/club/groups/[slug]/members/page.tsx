@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { requireClubUser } from "@/lib/club/auth";
 import type { ClubGroup, ClubProfile, GroupMemberRole } from "@/lib/club/types";
 
@@ -18,6 +19,9 @@ async function leaveOrRemove(formData: FormData) {
     .eq("group_id", groupId)
     .eq("user_id", userId);
 
+  revalidatePath(`/club/groups/${slug}/members`);
+  revalidatePath(`/club/groups/${slug}`);
+  revalidatePath(`/club`);
   redirect(userId === user.id ? "/club" : `/club/groups/${slug}/members`);
 }
 

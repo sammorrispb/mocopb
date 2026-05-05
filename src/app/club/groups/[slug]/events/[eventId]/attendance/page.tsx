@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { requireClubUser } from "@/lib/club/auth";
 import type {
   ClubEvent,
@@ -19,6 +20,9 @@ async function markOne(formData: FormData) {
   const eventId = String(formData.get("event_id"));
   const attended = String(formData.get("attended")) === "true";
   await supabase.rpc("club_mark_attendance", { p_reg_id: regId, p_attended: attended });
+  revalidatePath(`/club/groups/${slug}/events/${eventId}/attendance`);
+  revalidatePath(`/club/groups/${slug}/events/${eventId}`);
+  revalidatePath(`/club/profile`);
   redirect(`/club/groups/${slug}/events/${eventId}/attendance`);
 }
 
