@@ -1,29 +1,50 @@
 @import "tailwindcss";
 @import "tailwindcss/theme" theme(reference);
 
+/*
+ * Maryland flag palette — adopted 2026-05-05.
+ *
+ * The token names below (--color-court-green, --color-teal, etc.) are kept for
+ * diff-minimization with the existing class surface (text-court-green,
+ * bg-court-green, etc. are used throughout the codebase). The VALUES are now
+ * MD red / gold / black / white. A future task can rename the tokens to
+ * --color-md-red, --color-md-gold, etc. without functional impact.
+ *
+ * Brand mapping:
+ *   court-green       = #CD2228  Calvert / Crossland red (primary)
+ *   court-green-light = #E03C31  red light (hover)
+ *   teal              = #FFD200  Maryland gold (secondary)
+ *   teal-light        = #FCD116  gold light
+ *   bg-alt            = #FFF8E1  warm off-white tint
+ *   text-primary      = #1A1A1A  near-black
+ *   bg-dark           = #000000  Maryland black
+ */
+
 @theme inline {
-  /* Primary palette */
-  --color-court-green: #0d7c5f;
-  --color-court-green-light: #10b981;
-  --color-teal: #0891b2;
-  --color-teal-light: #22d3ee;
+  /* Primary palette — MD red */
+  --color-court-green: #CD2228;
+  --color-court-green-light: #E03C31;
+
+  /* Secondary palette — MD gold */
+  --color-teal: #FFD200;
+  --color-teal-light: #FCD116;
 
   /* Backgrounds */
   --color-bg: #ffffff;
-  --color-bg-alt: #f0fdf4;
+  --color-bg-alt: #FFF8E1;
   --color-bg-card: #ffffff;
-  --color-bg-nav: rgba(255, 255, 255, 0.92);
-  --color-bg-dark: #111827;
+  --color-bg-nav: rgba(255, 255, 255, 0.94);
+  --color-bg-dark: #000000;
 
   /* Text */
-  --color-text-primary: #1a2e1a;
+  --color-text-primary: #1A1A1A;
   --color-text-muted: #475569;
   --color-text-inverse: #ffffff;
 
   /* Accents */
   --color-cta-orange: #f97316;
   --color-cta-orange-hover: #ea580c;
-  --color-highlight: #fbbf24;
+  --color-highlight: #FFD200;
 
   /* Fonts */
   --font-heading: var(--font-montserrat), sans-serif;
@@ -35,8 +56,8 @@ html {
 }
 
 ::selection {
-  background-color: rgba(13, 124, 95, 0.2);
-  color: #1a2e1a;
+  background-color: rgba(205, 34, 40, 0.2);
+  color: #1A1A1A;
 }
 
 body {
@@ -66,66 +87,66 @@ body {
 }
 
 .card-moco:hover {
-  border-color: rgba(13, 124, 95, 0.3);
+  border-color: rgba(205, 34, 40, 0.3);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
 }
 
-/* Primary CTA button (green) */
+/* Primary CTA button (MD red → gold) */
 .btn-primary {
   display: inline-block;
-  background: linear-gradient(135deg, #0d7c5f, #0891b2);
+  background: linear-gradient(135deg, #CD2228, #E03C31);
   color: #fff;
   transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 2px 8px rgba(13, 124, 95, 0.3);
+  box-shadow: 0 2px 8px rgba(205, 34, 40, 0.3);
 }
 
 .btn-primary:hover {
-  filter: brightness(1.1);
+  filter: brightness(1.05);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(13, 124, 95, 0.4);
+  box-shadow: 0 4px 12px rgba(205, 34, 40, 0.4);
 }
 
-/* Hub CTA button (orange) */
+/* Secondary CTA button — MD gold (was orange "Hub" gradient) */
 .btn-hub {
   display: inline-block;
-  background: linear-gradient(135deg, #f97316, #ea580c);
-  color: #fff;
+  background: linear-gradient(135deg, #FFD200, #FCD116);
+  color: #1A1A1A;
   transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+  box-shadow: 0 2px 8px rgba(255, 210, 0, 0.4);
 }
 
 .btn-hub:hover {
-  filter: brightness(1.1);
+  filter: brightness(1.05);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+  box-shadow: 0 4px 12px rgba(255, 210, 0, 0.5);
 }
 
 /* Secondary button (outline) */
 .btn-outline {
   display: inline-block;
-  border: 2px solid #0d7c5f;
-  color: #0d7c5f;
+  border: 2px solid #CD2228;
+  color: #CD2228;
   background: transparent;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
 .btn-outline:hover {
-  background: #0d7c5f;
+  background: #CD2228;
   color: #fff;
 }
 
 /* Badge styles */
 .badge-indoor {
-  background: rgba(8, 145, 178, 0.1);
-  color: #0891b2;
-  border: 1px solid rgba(8, 145, 178, 0.2);
+  background: rgba(255, 210, 0, 0.15);
+  color: #8a6d00;
+  border: 1px solid rgba(255, 210, 0, 0.4);
 }
 
 .badge-outdoor {
-  background: rgba(13, 124, 95, 0.1);
-  color: #0d7c5f;
-  border: 1px solid rgba(13, 124, 95, 0.2);
+  background: rgba(205, 34, 40, 0.1);
+  color: #CD2228;
+  border: 1px solid rgba(205, 34, 40, 0.2);
 }
 
 /* Animations */
@@ -153,25 +174,25 @@ body {
   animation: fadeIn 0.4s ease-out forwards;
 }
 
-/* Gradient text */
+/* Gradient text — MD red → gold */
 .gradient-text-moco {
-  background: linear-gradient(135deg, #0d7c5f, #0891b2);
+  background: linear-gradient(135deg, #CD2228, #FFD200);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Hero background */
+/* Hero background — soft MD tint */
 .hero-moco {
   background:
-    radial-gradient(ellipse at 30% 20%, rgba(13, 124, 95, 0.08), transparent 60%),
-    radial-gradient(ellipse at 70% 80%, rgba(8, 145, 178, 0.06), transparent 60%),
-    #f0fdf4;
+    radial-gradient(ellipse at 30% 20%, rgba(205, 34, 40, 0.08), transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(255, 210, 0, 0.10), transparent 60%),
+    #FFF8E1;
 }
 
 /* Business CTA cards */
 .card-business {
-  background: linear-gradient(135deg, #f8fafc, #f0fdf4);
+  background: linear-gradient(135deg, #ffffff, #FFF8E1);
   border: 1px solid #e2e8f0;
   border-radius: 0.75rem;
   padding: 1.5rem;
@@ -199,13 +220,13 @@ body {
 }
 
 .faq-button:hover {
-  background: #f0fdf4;
-  border-color: rgba(13, 124, 95, 0.3);
+  background: #FFF8E1;
+  border-color: rgba(205, 34, 40, 0.3);
 }
 
 .faq-button[aria-expanded="true"] {
-  border-color: #0d7c5f;
-  background: #f0fdf4;
+  border-color: #CD2228;
+  background: #FFF8E1;
 }
 
 /* Sticky mobile CTA */

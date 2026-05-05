@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { events } from "@/lib/events";
-import { EventCard } from "@/components/EventCard";
 import { LeadForm } from "@/components/LeadForm";
 import { BusinessGrid } from "@/components/BusinessGrid";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
+import { fetchUpcomingPublicEvents } from "@/lib/club/public-events";
 
 export const metadata: Metadata = {
   title: "Pickleball Events in Montgomery County, MD",
@@ -12,8 +11,11 @@ export const metadata: Metadata = {
     "Upcoming pickleball tournaments, leagues, clinics, and social events in Montgomery County, Maryland. Find your next game.",
 };
 
-export default function EventsPage() {
-  const sorted = [...events].sort((a, b) => a.date.localeCompare(b.date));
+// Public events come from open-visibility groups in /club, so revalidate often.
+export const revalidate = 60;
+
+export default async function EventsPage() {
+  const events = await fetchUpcomingPublicEvents(15);
 
   return (
     <>
@@ -26,15 +28,55 @@ export default function EventsPage() {
             Tournaments, leagues, clinics, and social play across MoCo.
           </p>
 
-          {sorted.length > 0 ? (
-            <div className="space-y-4">
-              {sorted.map((event) => (
-                <EventCard key={event.slug} event={event} />
-              ))}
-            </div>
+          {events.length > 0 ? (
+            <ul className="space-y-3">
+              {events.map((e) => {
+                const start = new Date(e.starts_at);
+                return (
+                  <li key={e.event_id}>
+                    <Link
+                      href={`/club/groups/${e.group_slug}/events/${e.event_id}`}
+                      className="card-moco p-5 flex items-start gap-4 hover:border-court-green/30"
+                    >
+                      <div className="flex-shrink-0 w-14 text-center">
+                        <div className="text-xs font-semibold text-court-green uppercase">
+                          {start.toLocaleString(undefined, { month: "short" })}
+                        </div>
+                        <div className="text-2xl font-bold text-text-primary leading-none">
+                          {start.getDate()}
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-semibold text-text-primary">{e.title}</div>
+                        <div className="text-sm text-text-muted">
+                          {start.toLocaleString(undefined, {
+                            weekday: "short",
+                            hour: "numeric",
+                            minute: "2-digit",
+                          })}{" "}
+                          · {e.location} · {e.group_name}
+                        </div>
+                      </div>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           ) : (
-            <div className="text-center py-12">
-              <p className="text-text-muted text-lg">No upcoming events right now. Check back soon!</p>
+            <div className="card-moco p-8 text-center">
+              <h2 className="font-heading font-semibold text-xl text-text-primary mb-2">
+                No public events scheduled yet
+              </h2>
+              <p className="text-text-muted mb-5">
+                Hosting a regular crew? Open the Club to schedule events with capacity, waitlist,
+                and attendance — all in one place.
+              </p>
+              <Link
+                href="/club"
+                className="inline-block rounded-lg bg-court-green px-5 py-2.5 text-sm font-semibold text-white hover:bg-court-green/90"
+              >
+                Open the Club →
+              </Link>
             </div>
           )}
         </div>
@@ -44,25 +86,6 @@ export default function EventsPage() {
         <section className="py-16 px-4">
           <div className="max-w-lg mx-auto">
             <LeadForm page="events" defaultInterest="other" />
-          </div>
-        </section>
-      </AnimateOnScroll>
-
-      <AnimateOnScroll>
-        <section className="py-12 px-4 bg-section-alt">
-          <div className="max-w-3xl mx-auto rounded-xl border border-court-green/20 bg-white p-6 text-center">
-            <h2 className="font-heading font-semibold text-xl text-text-primary mb-2">
-              Hosting a regular crew?
-            </h2>
-            <p className="text-text-muted mb-4">
-              MoCo PB Club lets you schedule events, manage RSVPs, and auto-fill your waitlist.
-            </p>
-            <Link
-              href="/club"
-              className="inline-block rounded-lg bg-court-green px-4 py-2 text-sm font-semibold text-white hover:bg-court-green/90"
-            >
-              Open the Club →
-            </Link>
           </div>
         </section>
       </AnimateOnScroll>
@@ -95,7 +118,6 @@ export default function EventsPage() {
           </div>
         </section>
       </AnimateOnScroll>
-
     </>
   );
 }

@@ -1,46 +1,39 @@
 import { redirect } from "next/navigation";
 import { requireClubUser } from "@/lib/club/auth";
+import type { ClubGroup } from "@/lib/club/types";
 
 async function createGroup(formData: FormData) {
   "use server";
-  const { user, supabase } = await requireClubUser();
+  const { supabase } = await requireClubUser();
 
   const name = String(formData.get("name") ?? "").trim();
   const description = String(formData.get("description") ?? "").trim() || null;
   const visibility = String(formData.get("visibility") ?? "invite") as "open" | "invite";
 
-  if (!name || name.length > 80) {
-    redirect("/club/groups/new?error=name");
+  if (!name) redirect("/club/groups/new?error=Group+name+is+required");
+  if (name.length > 80) redirect("/club/groups/new?error=Group+name+too+long+(max+80)");
+
+  const { data, error } = await supabase.rpc("club_create_group", {
+    p_name: name,
+    p_description: description,
+    p_visibility: visibility,
+  });
+
+  if (error || !data) {
+    const msg = error?.message ?? "Could not create group";
+    redirect(`/club/groups/new?error=${encodeURIComponent(msg)}`);
   }
 
-  const baseSlug = name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "")
-    .slice(0, 32) || "group";
-
-  // Try base, then base-2, base-3, … in case of collision.
-  let slug = baseSlug;
-  for (let i = 0; i < 5; i++) {
-    const { data, error } = await supabase
-      .from("club_groups")
-      .insert({ slug, name, description, visibility, created_by: user.id })
-      .select("slug")
-      .single();
-    if (!error && data) {
-      redirect(`/club/groups/${data.slug}`);
-    }
-    if (error && error.code !== "23505") {
-      // Not a unique-violation — surface the real error.
-      redirect(`/club/groups/new?error=${encodeURIComponent(error.message)}`);
-    }
-    slug = `${baseSlug}-${Math.floor(Math.random() * 1000)}`;
-  }
-  redirect("/club/groups/new?error=slug");
+  const group = data as ClubGroup;
+  redirect(`/club/groups/${group.slug}`);
 }
 
-export default async function NewGroupPage() {
+type Props = { searchParams: Promise<{ error?: string }> };
+
+export default async function NewGroupPage({ searchParams }: Props) {
   await requireClubUser();
+  const { error } = await searchParams;
+
   return (
     <section className="py-10 px-4">
       <div className="max-w-md mx-auto">
@@ -48,6 +41,15 @@ export default async function NewGroupPage() {
         <p className="text-text-muted mb-6">
           Create a private group for your regular crew, or an open one anyone can find.
         </p>
+
+        {error && (
+          <div
+            role="alert"
+            className="mb-5 rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800"
+          >
+            <strong className="font-semibold">Couldn&apos;t create the group:</strong> {error}
+          </div>
+        )}
 
         <form action={createGroup} className="space-y-4">
           <div>
@@ -58,6 +60,7 @@ export default async function NewGroupPage() {
               id="name"
               name="name"
               required
+              minLength={1}
               maxLength={80}
               className="w-full rounded-lg border border-gray-300 px-3 py-2 text-base focus:border-court-green focus:outline-none focus:ring-1 focus:ring-court-green"
             />

@@ -19,7 +19,6 @@ const benefits = [
   { title: "Custom Practice Plans", desc: "Drills and strategies tailored to your goals" },
   { title: "DUPR Evaluations", desc: "Get your official rating from a certified coach" },
   { title: "Flexible Scheduling", desc: "Weekday and weekend availability" },
-  { title: "Indoor Facilities", desc: "Climate-controlled indoor courts in Montgomery County" },
 ];
 
 export default function LessonsPage() {
