@@ -13,16 +13,6 @@ export interface Group {
 
 export const groups: Group[] = [
   {
-    slug: "cabin-john-morning-crew",
-    name: "Cabin John Morning Crew",
-    description: "Early morning open play at Cabin John Regional Park. Regulars show up by 7am. Friendly group, all levels.",
-    skillLevel: "3.0-4.0",
-    meetingLocation: "Cabin John Regional Park",
-    frequency: "Daily (weather permitting)",
-    platform: "whatsapp",
-    featured: false,
-  },
-  {
     slug: "moco-pickleball-md",
     name: "MoCo Pickleball MD",
     description: "Community Facebook group for Montgomery County pickleball players. Events, meetups, and court updates.",

@@ -28,7 +28,7 @@ export const allFAQs: CategorizedFAQ[] = [
   {
     category: "getting-started",
     question: "How do I start playing pickleball in Montgomery County?",
-    answer: "The easiest way is to show up at a local court during open play hours. Cabin John Regional Park has free outdoor courts, and there are indoor courts in Montgomery County for year-round play. If you've never played before, consider a beginner clinic to learn the basics.",
+    answer: "The easiest way is to show up at a local court during open play hours. Cabin John Regional Park has free outdoor courts that fill up daily with players of every level. If you've never played before, consider a beginner clinic to learn the basics.",
     cta: { text: "Find courts near you", href: "/courts" },
   },
   {
@@ -41,18 +41,12 @@ export const allFAQs: CategorizedFAQ[] = [
     question: "What are the basic rules of pickleball?",
     answer: "Games are played to 11 points (win by 2). Only the serving team can score. The ball must bounce once on each side before volleys are allowed (the two-bounce rule). There's a 7-foot non-volley zone called 'the kitchen' near the net. Serves are underhand and diagonal.",
   },
-  {
-    category: "getting-started",
-    question: "What's the difference between indoor and outdoor pickleball?",
-    answer: "Indoor courts offer climate-controlled play, consistent lighting, and smoother surfaces. Outdoor courts (like Cabin John) are free but weather-dependent. Indoor balls have larger holes and are heavier; outdoor balls are harder and have smaller holes. Many players enjoy both.",
-    cta: { text: "Compare courts", href: "/courts" },
-  },
 
   // Finding Play
   {
     category: "finding-play",
     question: "Where can I play pickleball in Montgomery County?",
-    answer: "Montgomery County has 30+ pickleball courts across multiple facilities. Indoor options include indoor courts in Montgomery County. Outdoor courts include Cabin John Regional Park, Olney Manor, Wheaton Regional Park, and Germantown Recreation Center.",
+    answer: "Montgomery County has free outdoor courts at multiple facilities including Cabin John Regional Park, Olney Manor, Wheaton Regional Park, and Germantown Recreation Center.",
     cta: { text: "View all courts", href: "/courts" },
   },
   {
@@ -70,7 +64,7 @@ export const allFAQs: CategorizedFAQ[] = [
   {
     category: "finding-play",
     question: "What pickleball groups exist in Montgomery County?",
-    answer: "There are 15+ active pickleball groups in MoCo ranging from casual social play to competitive leagues. Groups meet at indoor courts in Montgomery County, Cabin John, and other facilities throughout the area.",
+    answer: "There are several active pickleball groups in MoCo ranging from casual social play to competitive leagues. Groups meet at Cabin John Regional Park, Olney Manor, Wheaton Regional Park, and other facilities throughout the area.",
     cta: { text: "Browse groups", href: "/groups" },
   },
 
@@ -90,7 +84,7 @@ export const allFAQs: CategorizedFAQ[] = [
   {
     category: "improving",
     question: "Should I take pickleball lessons?",
-    answer: "If you want to improve efficiently, yes. A certified coach can identify bad habits early, teach proper technique, and accelerate your development. Coach Sam Morris offers private lessons and skill evaluations at indoor courts in Montgomery County.",
+    answer: "If you want to improve efficiently, yes. A certified coach can identify bad habits early, teach proper technique, and accelerate your development. Coach Sam Morris offers private lessons and skill evaluations around Montgomery County.",
     cta: { text: "Book a private lesson", href: businessUrl(coaching, "faq_lessons", "book_private", "/programs/coaching") },
   },
   {
@@ -102,7 +96,7 @@ export const allFAQs: CategorizedFAQ[] = [
   {
     category: "improving",
     question: "Are there youth pickleball programs in Montgomery County?",
-    answer: "Yes! Next Gen Pickleball Academy offers structured programs for kids ages 5-16 at indoor courts in Montgomery County. Four skill levels (Red, Orange, Green, Yellow) ensure your child progresses at the right pace. It's the only dedicated youth academy in MoCo.",
+    answer: "Yes! Next Gen Pickleball Academy offers structured programs for kids ages 5-16 in Montgomery County. Four skill levels (Red, Orange, Green, Yellow) ensure your child progresses at the right pace.",
     cta: { text: "Explore youth programs", href: businessUrl(nga, "faq_youth", "explore_youth") },
   },
 
@@ -110,13 +104,13 @@ export const allFAQs: CategorizedFAQ[] = [
   {
     category: "competitive",
     question: "Are there pickleball leagues in Montgomery County?",
-    answer: "Yes — multiple DUPR-rated leagues run at indoor courts in Montgomery County throughout the year. Leagues are organized by skill level so you play competitive matches against similar players. Seasons run 6-8 weeks with weekly matches.",
+    answer: "Yes — multiple DUPR-rated leagues run in Montgomery County throughout the year. Leagues are organized by skill level so you play competitive matches against similar players. Seasons run 6-8 weeks with weekly matches.",
     cta: { text: "See upcoming events", href: "/events" },
   },
   {
     category: "competitive",
     question: "How do I join a pickleball tournament?",
-    answer: "Tournaments in MoCo are typically hosted at indoor courts in Montgomery County. Events range from beginner-friendly round robins to competitive DUPR-rated brackets. Check the venue's reservation system for upcoming dates and registration.",
+    answer: "Tournaments in MoCo are hosted at various venues throughout the area. Events range from beginner-friendly round robins to competitive DUPR-rated brackets. Check upcoming events for dates and registration.",
     cta: { text: "See upcoming events", href: "/events" },
   },
   {
