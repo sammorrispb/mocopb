@@ -11,8 +11,9 @@ export const metadata: Metadata = {
     "Upcoming pickleball tournaments, leagues, clinics, and social events in Montgomery County, Maryland. Find your next game.",
 };
 
-// Public events come from open-visibility groups in /club, so revalidate often.
-export const revalidate = 60;
+// Public events come from open-visibility groups in /club; render on every request
+// so a freshly-created event appears immediately. Cost is cheap (one indexed query).
+export const dynamic = "force-dynamic";
 
 export default async function EventsPage() {
   const events = await fetchUpcomingPublicEvents(15);
