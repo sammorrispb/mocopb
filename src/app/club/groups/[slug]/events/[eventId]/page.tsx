@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { requireClubUser } from "@/lib/club/auth";
 import type {
   ClubEvent,
@@ -23,6 +24,10 @@ async function rsvp(formData: FormData) {
   } else if (action === "cancel") {
     await supabase.rpc("club_cancel_registration", { p_event_id: eventId });
   }
+  // Bust Router Cache so the redirect lands on a freshly-rendered page.
+  revalidatePath(`/club/groups/${slug}/events/${eventId}`);
+  revalidatePath(`/club/groups/${slug}`);
+  revalidatePath(`/club`);
   redirect(`/club/groups/${slug}/events/${eventId}`);
 }
 

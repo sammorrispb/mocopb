@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { requireClubUser } from "@/lib/club/auth";
 import type { ClubProfile, RegistrationStatus } from "@/lib/club/types";
 
@@ -10,6 +11,8 @@ async function updateProfile(formData: FormData) {
   const phone = String(formData.get("phone") ?? "").trim() || null;
   if (!display_name || display_name.length > 60) redirect("/club/profile?error=name");
   await supabase.from("club_profiles").update({ display_name, phone }).eq("id", user.id);
+  revalidatePath("/club/profile");
+  revalidatePath("/club");
   redirect("/club/profile");
 }
 

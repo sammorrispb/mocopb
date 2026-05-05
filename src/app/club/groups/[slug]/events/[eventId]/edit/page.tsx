@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { requireClubUser } from "@/lib/club/auth";
 import type { ClubEvent, ClubGroup, GroupMemberRole } from "@/lib/club/types";
 
@@ -29,6 +30,9 @@ async function updateEvent(formData: FormData) {
   const action = String(formData.get("action") ?? "save");
   if (action === "cancel") {
     await supabase.from("club_events").update({ status: "cancelled" }).eq("id", eventId);
+    revalidatePath(`/club/groups/${slug}/events/${eventId}`);
+    revalidatePath(`/club/groups/${slug}`);
+    revalidatePath(`/events`);
     redirect(`/club/groups/${slug}/events/${eventId}`);
   }
 
@@ -43,6 +47,9 @@ async function updateEvent(formData: FormData) {
   updates.ends_at = ends ? new Date(ends).toISOString() : null;
 
   await supabase.from("club_events").update(updates).eq("id", eventId);
+  revalidatePath(`/club/groups/${slug}/events/${eventId}`);
+  revalidatePath(`/club/groups/${slug}`);
+  revalidatePath(`/events`);
   redirect(`/club/groups/${slug}/events/${eventId}`);
 }
 
