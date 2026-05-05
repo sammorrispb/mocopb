@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { groups } from "@/lib/groups";
 import { GroupCard } from "@/components/GroupCard";
 
@@ -31,6 +32,23 @@ export default function GroupsPage() {
             {featured.map((group) => (
               <GroupCard key={group.slug} group={group} />
             ))}
+          </div>
+
+          {/* Run your own group — Club CTA */}
+          <div className="mb-12 rounded-xl border border-court-green/20 bg-section-alt p-6">
+            <h2 className="font-heading font-semibold text-xl text-text-primary mb-1">
+              Running your own crew?
+            </h2>
+            <p className="text-text-muted mb-4">
+              MoCo PB Club is a free tool to organize your group&apos;s events, capacity,
+              waitlist, and attendance — all in one place.
+            </p>
+            <Link
+              href="/club"
+              className="inline-block rounded-lg bg-court-green px-4 py-2 text-sm font-semibold text-white hover:bg-court-green/90"
+            >
+              Open the Club →
+            </Link>
           </div>
 
           {/* Other */}

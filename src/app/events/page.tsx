@@ -48,6 +48,25 @@ export default function EventsPage() {
         </section>
       </AnimateOnScroll>
 
+      <AnimateOnScroll>
+        <section className="py-12 px-4 bg-section-alt">
+          <div className="max-w-3xl mx-auto rounded-xl border border-court-green/20 bg-white p-6 text-center">
+            <h2 className="font-heading font-semibold text-xl text-text-primary mb-2">
+              Hosting a regular crew?
+            </h2>
+            <p className="text-text-muted mb-4">
+              MoCo PB Club lets you schedule events, manage RSVPs, and auto-fill your waitlist.
+            </p>
+            <Link
+              href="/club"
+              className="inline-block rounded-lg bg-court-green px-4 py-2 text-sm font-semibold text-white hover:bg-court-green/90"
+            >
+              Open the Club →
+            </Link>
+          </div>
+        </section>
+      </AnimateOnScroll>
+
       <BusinessGrid />
 
       <AnimateOnScroll>
