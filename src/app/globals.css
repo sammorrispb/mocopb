@@ -182,12 +182,21 @@ body {
   background-clip: text;
 }
 
-/* Hero background — soft MD tint */
+/* Hero background — real pickleball photo with cream tint overlay for text legibility */
 .hero-moco {
+  position: relative;
   background:
-    radial-gradient(ellipse at 30% 20%, rgba(205, 34, 40, 0.08), transparent 60%),
-    radial-gradient(ellipse at 70% 80%, rgba(255, 210, 0, 0.10), transparent 60%),
-    #FFF8E1;
+    linear-gradient(rgba(255, 248, 225, 0.84), rgba(255, 248, 225, 0.90)),
+    url('/images/hero/hero-doubles-rally-01.jpg');
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .hero-moco {
+    background-position: 38% 35%;
+  }
 }
 
 /* Business CTA cards */

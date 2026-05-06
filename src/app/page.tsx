@@ -9,6 +9,7 @@ import { GroupCard } from "@/components/GroupCard";
 import { BusinessGrid } from "@/components/BusinessGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { CityGrid } from "@/components/CityGrid";
+import { CommunityStrip } from "@/components/CommunityStrip";
 import { LeadForm } from "@/components/LeadForm";
 import { TrackedCTA } from "@/components/TrackedCTA";
 
@@ -123,6 +124,11 @@ export default function HomePage() {
             </Link>
           </div>
         </section>
+      </AnimateOnScroll>
+
+      {/* Community Strip — lifestyle imagery */}
+      <AnimateOnScroll>
+        <CommunityStrip />
       </AnimateOnScroll>
 
       {/* City Pages — Local SEO */}
