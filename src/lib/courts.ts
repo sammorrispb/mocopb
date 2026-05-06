@@ -15,6 +15,16 @@ export interface Court {
   notes?: string;
   hubGroupSlug?: string;
   featured?: boolean;
+  image?: string;
+}
+
+const IMG_MULTICOURT = "/images/courts/courts-complex-multicourt-01.jpg";
+const IMG_DAWN = "/images/courts/courts-dawn-mist-04.jpg";
+
+export function getCourtImage(court: Pick<Court, "type" | "courtCount" | "image">): string {
+  if (court.image) return court.image;
+  if (court.type === "outdoor" && court.courtCount >= 4) return IMG_MULTICOURT;
+  return IMG_DAWN;
 }
 
 export const courts: Court[] = [
@@ -49,6 +59,7 @@ export const courts: Court[] = [
     hours: "Dawn to dusk. Lights available until 11pm.",
     website: "https://montgomeryparks.org/new-pickleball-courts-open-at-east-norbeck-local-park/",
     notes: "Free. Six dedicated lighted courts. M-NCPPC's flagship pickleball hub since November 2024. First come, first served.",
+    featured: true,
   },
   {
     slug: "mattie-stepanek-park",
@@ -64,6 +75,7 @@ export const courts: Court[] = [
     hours: "Dawn to dusk",
     website: "https://www.rockvillemd.gov/places/mattie-j-t-stepanek-park/",
     notes: "Free. Four dedicated lighted courts. Open play available — popular with morning and evening players.",
+    featured: true,
   },
   {
     slug: "olney-mill-neighborhood-park",
