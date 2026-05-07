@@ -24,7 +24,6 @@ moves the item to the **Done log** below.
 
 ## P0 — Foundation Sweep
 
-- [ ] (schema, S) Create `src/lib/seo.ts` with `breadcrumbJsonLd(items)` and `eventJsonLd(event)` helpers. Why: shared primitives for the rest of P0 + future schema work. Reference: schema.org/BreadcrumbList.
 - [ ] (schema, S) Add BreadcrumbList JSON-LD to all static pages: `/courts`, `/lessons`, `/clinics`, `/youth`, `/leagues`, `/open-play`, `/groups`, `/events`, `/faq`. Why: rich-result eligibility, near-zero risk. Reuse the helper from the previous task.
 - [ ] (schema, S) Add BreadcrumbList JSON-LD to dynamic routes `/courts/[slug]` and `/play/[city]`. Chains: `Home > Courts > [court name]` and `Home > Cities > [city]`.
 - [ ] (schema, M) Add `LocalBusiness` JSON-LD to `src/app/layout.tsx` with `areaServed` covering all 9 (eventually 12) cities and `sameAs` linking to sammorrispb.com + nextgenpbacademy.com. Why: cross-site entity graph + map-pack candidacy.
@@ -60,4 +59,4 @@ moves the item to the **Done log** below.
 
 ## Done log (auto-pruned at 30 days)
 
-_(Empty — agent appends entries here as it ships PRs.)_
+- 2026-05-07 — (schema, S) Create `src/lib/seo.ts` with `breadcrumbJsonLd(items)` and `eventJsonLd(event)` helpers. (PR #pending)
