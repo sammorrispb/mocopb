@@ -59,4 +59,4 @@ moves the item to the **Done log** below.
 
 ## Done log (auto-pruned at 30 days)
 
-- 2026-05-07 — (schema, S) Create `src/lib/seo.ts` with `breadcrumbJsonLd(items)` and `eventJsonLd(event)` helpers. (PR #pending)
+- 2026-05-07 — (schema, S) Create `src/lib/seo.ts` with `breadcrumbJsonLd(items)` and `eventJsonLd(event)` helpers. (PR #30)
