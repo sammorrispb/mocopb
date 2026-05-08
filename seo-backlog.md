@@ -28,7 +28,6 @@ moves the item to the **Done log** below.
 - [ ] (schema, S) Add BreadcrumbList JSON-LD to all static pages: `/courts`, `/lessons`, `/clinics`, `/youth`, `/leagues`, `/open-play`, `/groups`, `/events`, `/faq`. Why: rich-result eligibility, near-zero risk. Reuse the helper from the previous task.
 - [ ] (schema, S) Add BreadcrumbList JSON-LD to dynamic routes `/courts/[slug]` and `/play/[city]`. Chains: `Home > Courts > [court name]` and `Home > Cities > [city]`.
 - [ ] (schema, M) Add `LocalBusiness` JSON-LD to `src/app/layout.tsx` with `areaServed` covering all 9 (eventually 12) cities and `sameAs` linking to sammorrispb.com + nextgenpbacademy.com. Why: cross-site entity graph + map-pack candidacy.
-- [ ] (technical, S) Image alt-text audit on `CourtCard`, `BusinessGrid`, `CityGrid`, `Footer`, `Nav`, and homepage hero. Pattern for court images: `"${court.name} pickleball courts in ${court.city}, MD"`. Pattern for city heroes: `"Pickleball courts in ${city.name}, Montgomery County, MD"`.
 - [ ] (technical, S) Verify Event schema on `src/app/club/groups/[slug]/events/[id]/page.tsx`. If missing, add `eventJsonLd` per club event row using the helper from task 1.
 - [ ] (technical, S) `/open-play` placeholder hardening: add `robots: { index: false, follow: true }` via `generateMetadata`, and remove `/open-play` from `src/app/sitemap.ts` until the directory has real content. Why: thin content dilutes site-wide quality signal.
 
@@ -60,4 +59,4 @@ moves the item to the **Done log** below.
 
 ## Done log (auto-pruned at 30 days)
 
-_(Empty — agent appends entries here as it ships PRs.)_
+- 2026-05-08 — (technical, S) Image alt-text audit on `CourtCard`, `BusinessGrid`, `CityGrid`, `Footer`, `Nav`, and homepage hero. Pattern for court images: `"${court.name} pickleball courts in ${court.city}, MD"`. Pattern for city heroes: `"Pickleball courts in ${city.name}, Montgomery County, MD"`. (PR #pending)

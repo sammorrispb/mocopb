@@ -9,7 +9,7 @@ export function CourtCard({ court }: { court: Court }) {
       <div className="relative aspect-[16/10] w-full bg-gray-100">
         <Image
           src={image}
-          alt={`${court.name} pickleball courts`}
+          alt={`${court.name} pickleball courts in ${court.city}, MD`}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
