@@ -59,4 +59,4 @@ moves the item to the **Done log** below.
 
 ## Done log (auto-pruned at 30 days)
 
-- 2026-05-08 — (technical, S) Image alt-text audit on `CourtCard`, `BusinessGrid`, `CityGrid`, `Footer`, `Nav`, and homepage hero. Pattern for court images: `"${court.name} pickleball courts in ${court.city}, MD"`. Pattern for city heroes: `"Pickleball courts in ${city.name}, Montgomery County, MD"`. (PR #pending)
+- 2026-05-08 — (technical, S) Image alt-text audit on `CourtCard`, `BusinessGrid`, `CityGrid`, `Footer`, `Nav`, and homepage hero. Pattern for court images: `"${court.name} pickleball courts in ${court.city}, MD"`. Pattern for city heroes: `"Pickleball courts in ${city.name}, Montgomery County, MD"`. (PR #31)
